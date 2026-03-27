@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
@@ -27,7 +27,7 @@
       box-shadow: 0 0 0 1px rgba(0,0,0,.06);
     }
 
-    /* ── Condition bar ── */
+  /* Condition bar */
     #rule-bar {
       height: 52px;
       padding: 0 10px 0 12px;
@@ -39,12 +39,10 @@
       background: #16213e;
       transition: background .35s ease;
     }
-    /* Tint classes applied per condition type */
+  /* Tint classes applied per condition type */
     #rule-bar.tint-free       { background: #1e1e24; }
     #rule-bar.tint-sequence   { background: #1a1030; }
     #rule-bar.tint-streak     { background: #0d1f35; }
-    #rule-bar.tint-alternating{ background: #221a08; }
-    #rule-bar.tint-count      { background: #221018; }
     #rule-bar.tint-time       { background: #2a0e0e; }
 
     #cond-bar-inner {
@@ -71,7 +69,7 @@
       margin-left: 8px;
       flex-shrink: 0;
     }
-    /* Sequence / streak dots */
+  /* Sequence / streak dots */
     .cond-dot {
       width: 10px;
       height: 10px;
@@ -80,7 +78,7 @@
       transition: transform .15s;
     }
     .cond-dot.active { transform: scale(1.3); }
-    /* Count-limit chips */
+  /* Count-limit chips */
     .cond-count-chip {
       display: flex;
       align-items: center;
@@ -96,14 +94,6 @@
       height: 7px;
       border-radius: 50%;
     }
-    /* Arrow label for alternating */
-    .cond-arrow-label {
-      font-size: 11px;
-      color: rgba(255,255,255,.7);
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
     .cond-color-badge {
       display: inline-block;
       width: 10px;
@@ -111,7 +101,7 @@
       border-radius: 50%;
       flex-shrink: 0;
     }
-    /* Time-window clock label */
+  /* Time-window clock label */
     .cond-clock-label {
       font-size: 11px;
       color: rgba(255,255,255,.75);
@@ -133,7 +123,7 @@
       will-change: transform, opacity;
     }
 
-    /* ── Mission pill ── */
+  /* Mission pill */
     #mission-pill {
       position: absolute;
       top: 8px;
@@ -185,7 +175,7 @@
       text-align: right;
     }
 
-    /* ── Score row ── */
+  /* Score row */
     #score-row {
       height: 36px;
       display: flex;
@@ -209,7 +199,7 @@
       color: #1a1a1a;
     }
 
-    /* ── Combo progress bar ── */
+  /* Combo progress bar */
     #combo-track {
       height: 3px;
       background: #ededeb;
@@ -223,7 +213,7 @@
       transform-origin: left center;
     }
 
-    /* ── Level progress bar (thin, above canvas) ── */
+  /* Level progress bar (thin, above canvas) */
     #level-progress {
       height: 2px;
       background: transparent;
@@ -237,10 +227,12 @@
       border-radius: 0 1px 1px 0;
     }
 
-    /* ── Canvas area ── */
+  /* Canvas area */
     #canvas-wrap {
       position: relative;
-      height: 300px;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
       flex-shrink: 0;
     }
     #gameCanvas {
@@ -249,7 +241,7 @@
       height: 100%;
     }
 
-    /* ── Canvas overlays (start / game-over / level-clear / level-intro) ── */
+  /* Canvas overlays (start / game-over / level-clear / level-intro) */
     .canvas-overlay {
       position: absolute;
       inset: 0;
@@ -263,7 +255,7 @@
     }
     .canvas-overlay.hidden { display: none; }
 
-    /* main game overlay kept as #overlay for backwards compat */
+  /* main game overlay kept as #overlay for backwards compat */
     #overlay {
       position: absolute;
       inset: 0;
@@ -307,25 +299,25 @@
       transition: opacity .15s;
     }
     .overlay-btn:active { opacity: .75; }
-    /* keep old id selector working */
+  /* keep old id selector working */
     #overlay-btn { margin-top: 6px; padding: 10px 32px; background: #0F6E56; color: #fff;
       border: none; border-radius: 99px; font-size: 15px; font-weight: 600;
       cursor: pointer; transition: opacity .15s; }
     #overlay-btn:active { opacity: .75; }
 
-    /* mechanic chips inside overlays */
+  /* mechanic chips inside overlays */
     .mech-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; padding: 0 16px; }
     .mech-chip  { font-size: 11px; padding: 2px 9px; border-radius: 99px;
                   background: #f0efec; color: #555; border: 1px solid #e0dfdc; }
 
-    /* progress bar (retry screen) */
+  /* progress bar (retry screen) */
     .prog-track { width: 200px; height: 6px; background: #e9e8e4; border-radius: 99px; overflow: hidden; }
     .prog-fill  { height: 6px; background: #0F6E56; border-radius: 99px; transition: width .3s; }
 
-    /* star rating */
+  /* star rating */
     .stars { font-size: 28px; letter-spacing: 4px; }
 
-    /* secondary button (level-select from retry) */
+  /* secondary button (level-select from retry) */
     .overlay-btn-ghost {
       padding: 8px 24px;
       background: transparent;
@@ -338,7 +330,7 @@
     }
     .overlay-btn-ghost:active { background: #f0efec; }
 
-    /* ── Fever top border strip ── */
+  /* Fever top border strip */
     #fever-bar {
       height: 3px;
       flex-shrink: 0;
@@ -363,7 +355,7 @@
       to   { opacity: 1; }
     }
 
-    /* ── Fever combo-bar overlay ── */
+  /* Fever combo-bar overlay */
     #fever-track {
       display: none;
       height: 3px;
@@ -399,39 +391,63 @@
       to   { opacity: 1; }
     }
 
-    /* ── Slow skill row ── */
+  /* Slow skill row */
     #slow-row {
-      height: 40px;
+      height: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      border-top: 1px solid #ededeb;
+      gap: 0;
+      border-top: none;
       flex-shrink: 0;
-      background: #fafaf8;
+      background: transparent;
+      position: relative;
+      overflow: visible;
+      z-index: 3;
+      pointer-events: none;
     }
     #slow-label {
-      font-size: 10px;
-      color: #888;
-      letter-spacing: .04em;
+      display: none;
     }
     #slow-btn {
       display: flex;
       align-items: center;
-      gap: 6px;
-      padding: 5px 14px;
-      background: #f0efec;
-      border: 1.5px solid #d8d7d3;
-      border-radius: 99px;
+      justify-content: center;
+      flex-direction: column;
+      gap: 3px;
+      width: 78px;
+      height: 78px;
+      padding: 0;
+      background: rgba(255,255,255,.96);
+      border: 1.5px solid rgba(15,110,86,.16);
+      border-radius: 50%;
       cursor: pointer;
       font-size: 12px;
       font-weight: 600;
       color: #444;
-      transition: background .1s, border-color .1s, transform .08s;
+      transition: background .1s, border-color .1s, transform .08s, box-shadow .12s;
       -webkit-tap-highlight-color: transparent;
       user-select: none;
+      pointer-events: auto;
+      position: absolute;
+      left: 50%;
+      top: 10px;
+      transform: translateX(-50%);
+      box-shadow: 0 10px 24px rgba(0,0,0,.12);
     }
-    #slow-btn:active { transform: scale(.95); background: #e8e7e4; }
+    #slow-count {
+      font-size: 26px;
+      line-height: 1;
+      font-weight: 800;
+      color: #0F6E56;
+      font-variant-numeric: tabular-nums;
+    }
+    #slow-caption {
+      font-size: 10px;
+      letter-spacing: .08em;
+      color: #6f6f6b;
+    }
+    #slow-btn:active { transform: translateX(-50%) scale(.95); background: #e8e7e4; }
     #slow-btn.active {
       border-color: #378ADD;
       background: rgba(55,138,221,.08);
@@ -442,37 +458,19 @@
       to   { box-shadow: 0 0 0 5px rgba(55,138,221,.0); }
     }
     #slow-btn.empty { opacity: .45; pointer-events: none; }
-    .slow-charge {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #378ADD;
-      transition: background .2s, transform .2s;
-      flex-shrink: 0;
-    }
-    .slow-charge.empty {
-      background: transparent;
-      border: 1.5px solid #aaa;
-    }
-    .slow-charge.refill {
-      animation: slow-refill .35s ease;
-    }
-    @keyframes slow-refill {
-      0%   { transform: scale(0); background: #1D9E75; }
-      60%  { transform: scale(1.5); }
-      100% { transform: scale(1); background: #378ADD; }
-    }
 
-    /* ── Control buttons ── */
+  /* Control buttons */
     #controls {
-      height: 64px;
+      height: 128px;
       display: flex;
       border-top: 1px solid #ededeb;
       flex-shrink: 0;
+      background: linear-gradient(180deg, #fbfbfa 0%, #f1f0ed 100%);
     }
     .ctrl-btn {
       flex: 1;
-      background: #fff;
+      min-height: 128px;
+      background: transparent;
       border: none;
       cursor: pointer;
       user-select: none;
@@ -481,16 +479,31 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 0;
+      touch-action: none;
       color: #555;
+      position: relative;
     }
-    .ctrl-btn svg { width: 22px; height: 22px; pointer-events: none; }
+    .ctrl-btn svg { width: 34px; height: 34px; pointer-events: none; opacity: .9; }
     .ctrl-btn.pressed {
-      background: #e8e7e4;
-      transform: scale(0.95);
+      background: rgba(15,110,86,.08);
     }
-    #ctrl-left { border-right: 1px solid #ededeb; }
+    #ctrl-left { border-right: 1px solid rgba(0,0,0,.05); }
+    #ctrl-left::after,
+    #ctrl-right::after {
+      position: absolute;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      letter-spacing: .08em;
+      color: #8a8a86;
+      pointer-events: none;
+    }
+    #ctrl-left::after { content: 'LEFT'; }
+    #ctrl-right::after { content: 'RIGHT'; }
 
-    /* ── Level select screen ── */
+  /* Level select screen */
     #level-select {
       display: none;
       flex-direction: column;
@@ -542,12 +555,12 @@
     .lv-card .lv-star         { font-size: 11px; }
     .lv-card .lv-lock         { font-size: 14px; color: #ccc; }
 
-    /* theme dot colors */
+  /* theme dot colors */
     .dot-space  { background: #6366f1; }
     .dot-neon   { background: #ec4899; }
     .dot-forest { background: #22c55e; }
 
-    /* ── Settings gear button (inside rule-bar) ── */
+  /* Settings gear button (inside rule-bar) */
     #settings-btn {
       position: absolute;
       right: 12px;
@@ -569,8 +582,33 @@
     }
     #settings-btn:active { background: rgba(255,255,255,.12); color: #fff; }
     #settings-btn svg { width: 18px; height: 18px; pointer-events: none; }
+    #pause-btn {
+      position: absolute;
+      left: 50%;
+      top: 96px;
+      transform: none;
+      width: 44px;
+      height: 44px;
+      border: none;
+      background: rgba(255,255,255,.96);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: #555;
+      transition: background .1s, color .1s, transform .08s, box-shadow .12s;
+      z-index: 2;
+      padding: 0;
+      box-shadow: 0 8px 20px rgba(0,0,0,.1);
+      border: 1.5px solid rgba(15,110,86,.12);
+      pointer-events: auto;
+      margin-left: -22px;
+    }
+    #pause-btn:active { background: #e8e7e4; transform: scale(.95); }
+    #pause-btn svg { width: 18px; height: 18px; pointer-events: none; }
 
-    /* ── Settings bottom sheet ── */
+  /* Settings bottom sheet */
     #settings-sheet {
       position: fixed;
       inset: 0;
@@ -619,7 +657,7 @@
     }
     .sheet-row-label { font-size: 14px; color: #222; }
     .sheet-row-sub   { font-size: 11px; color: #aaa; margin-top: 2px; }
-    /* Toggle switch */
+  /* Toggle switch */
     .toggle-wrap { position: relative; width: 44px; height: 26px; flex-shrink: 0; }
     .toggle-wrap input { opacity: 0; width: 0; height: 0; }
     .toggle-track {
@@ -648,7 +686,7 @@
     .sheet-danger:active { background: #fde8e4; }
     .sheet-version { font-size: 11px; color: #ccc; text-align: center; padding: 4px 0 16px; }
 
-    /* ── Level select redesign: phase tabs + 5-column grid ── */
+  /* Level select redesign: phase tabs + 5-column grid */
     #ls-total-stars {
       font-size: 13px; color: #888; font-weight: 500;
     }
@@ -676,7 +714,7 @@
       font-size: 8px; line-height: 1;
     }
 
-    /* ── Life icons (circle style) ── */
+  /* Life icons (circle style) */
     .life-icon {
       width: 12px;
       height: 12px;
@@ -705,15 +743,12 @@
 <body>
 <div id="app">
 
-  <!-- ══════════════════════════════════════════
-       LEVEL SELECT SCREEN (shown/hidden via JS)
-  ══════════════════════════════════════════ -->
+ <!-- LEVEL SELECT SCREEN (shown/hidden via JS) -->
   <div id="level-select">
     <div class="level-select-header">
       <h2>레벨 선택</h2>
       <div style="display:flex;align-items:center;gap:8px">
-        <span id="ls-total-stars">⭐ 0 / 60</span>
-        <button id="ls-back-btn">← 뒤로</button>
+        <button id="ls-back-btn">뒤로</button>
       </div>
     </div>
     <div id="phase-tabs">
@@ -725,12 +760,10 @@
     <div id="level-grid-container"><!-- JS renders cards here --></div>
   </div>
 
-  <!-- ══════════════════════════════════════════
-       GAME UI (hidden while level-select shown)
-  ══════════════════════════════════════════ -->
+ <!-- GAME UI (hidden while level-select shown) -->
   <div id="game-ui" style="display:flex;flex-direction:column;flex:1;">
 
-    <!-- 1. Condition bar -->
+  <!-- 1. Condition bar -->
     <div id="rule-bar">
       <div id="cond-bar-inner">
         <canvas id="rule-icon-canvas" width="22" height="22" style="flex-shrink:0;margin-right:6px"></canvas>
@@ -752,41 +785,41 @@
       <div id="rule-flash"></div>
     </div>
 
-    <!-- 2. Score row -->
+  <!-- 2. Score row -->
     <div id="score-row">
       <div class="chip">점수&nbsp;<span class="chip-val" id="ui-score">0</span></div>
       <div class="chip">콤보&nbsp;<span class="chip-val" id="ui-combo">0</span></div>
-      <div class="chip" id="chip-target" style="margin-left:auto">목표&nbsp;<span class="chip-val" id="ui-target">—</span></div>
+      <div class="chip" id="chip-target" style="margin-left:auto">목표&nbsp;<span class="chip-val" id="ui-target">0</span></div>
       <div id="ui-lives" style="display:flex;align-items:center;gap:3px;margin-left:6px"></div>
     </div>
 
-    <!-- 3. Combo progress bar (hidden during fever; fever-track replaces it) -->
+  <!-- 3. Combo progress bar (hidden during fever; fever-track replaces it) -->
     <div id="combo-track"><div id="combo-fill"></div></div>
 
-    <!-- 3b. Fever countdown bar (shown only during fever) -->
+  <!-- 3b. Fever countdown bar (shown only during fever) -->
     <div id="fever-track">
       <div id="fever-fill"></div>
-      <div id="fever-label">⚡ FEVER</div>
+      <div id="fever-label">FEVER</div>
     </div>
 
-    <!-- 3c. Level progress bar -->
+  <!-- 3c. Level progress bar -->
     <div id="level-progress"><div id="level-progress-fill"></div></div>
 
-    <!-- 3d. Fever top border (above canvas) -->
+  <!-- 3d. Fever top border (above canvas) -->
     <div id="fever-bar"><div id="fever-bar-fill"></div></div>
 
-    <!-- 4. Game canvas -->
+  <!-- 4. Game canvas -->
     <div id="canvas-wrap">
       <canvas id="gameCanvas"></canvas>
 
-      <!-- Mission pill (top-right of canvas) -->
+   <!-- Mission pill (top-right of canvas) -->
       <div id="mission-pill" class="hidden">
         <div id="mission-desc">—</div>
         <div id="mission-bar-track"><div id="mission-bar-fill"></div></div>
         <div id="mission-reward">+0</div>
       </div>
 
-      <!-- ── Level intro overlay (1.5 s) ── -->
+      <!-- Level intro overlay (1.5 s) -->
       <div id="intro-overlay" class="canvas-overlay hidden">
         <div id="intro-lv"    style="font-size:13px;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.07em"></div>
         <div id="intro-title" style="font-size:22px;font-weight:700;color:#1a1a1a"></div>
@@ -796,17 +829,16 @@
         <div id="intro-countdown" style="font-size:36px;font-weight:800;color:#0F6E56;margin-top:4px"></div>
       </div>
 
-      <!-- ── Level clear overlay ── -->
+      <!-- Level clear overlay -->
       <div id="clear-overlay" class="canvas-overlay hidden">
         <div style="font-size:13px;color:#0F6E56;font-weight:700;text-transform:uppercase;letter-spacing:.06em">Level Clear!</div>
         <div id="clear-lv"    style="font-size:20px;font-weight:700;color:#1a1a1a"></div>
-        <div id="clear-stars" class="stars"></div>
         <div id="clear-score" style="font-size:13px;color:#555"></div>
         <button id="clear-next-btn" class="overlay-btn">다음 레벨 →</button>
         <button id="clear-select-btn" class="overlay-btn-ghost">레벨 선택</button>
       </div>
 
-      <!-- ── Retry / game-over overlay ── -->
+      <!-- Retry / game-over overlay -->
       <div id="retry-overlay" class="canvas-overlay hidden">
         <div style="font-size:20px;font-weight:700;color:#1a1a1a">게임 오버</div>
         <div id="retry-score" style="font-size:13px;color:#555"></div>
@@ -816,26 +848,39 @@
         <button id="retry-sel-btn" class="overlay-btn-ghost">레벨 선택</button>
       </div>
 
-      <!-- ── Start overlay (first boot) ── -->
+      <div id="pause-overlay" class="canvas-overlay hidden">
+        <div style="font-size:13px;color:#0F6E56;font-weight:700;text-transform:uppercase;letter-spacing:.06em">Paused</div>
+        <div style="font-size:22px;font-weight:700;color:#1a1a1a">일시 정지</div>
+        <div style="font-size:13px;color:#666;text-align:center;line-height:1.5;padding:0 24px">현재 진행 상태를 그대로 유지한 채 멈췄습니다.</div>
+        <button id="pause-resume-btn" class="overlay-btn">이어하기</button>
+      </div>
+
+      <!-- Start overlay (first boot) -->
       <div id="overlay">
         <div id="overlay-title">Condition Runner</div>
-        <div id="overlay-sub">떨어지는 오브젝트를 전부 모으세요!<br>놓치면 목숨을 잃어요. 콤보를 쌓으면 조건이 바뀝니다.</div>
+        <div id="overlay-sub">떨어지는 오브젝트를 최대한 모으세요!<br>놓치면 목숨이 줄어들고, 콤보를 쌓으면 조건이 바뀝니다.</div>
         <div id="overlay-scores"></div>
         <button id="overlay-btn">시작하기</button>
+        <button id="overlay-select-btn" class="overlay-btn-ghost">레벨 선택</button>
       </div>
     </div>
 
-    <!-- 5. Slow skill row -->
+  <!-- 5. Slow skill row -->
     <div id="slow-row">
       <span id="slow-label">SLOW</span>
       <button id="slow-btn" aria-label="슬로우 스킬 사용">
-        <span class="slow-charge" id="slow-c0"></span>
-        <span class="slow-charge" id="slow-c1"></span>
-        <span style="font-size:11px;color:#555">슬로우</span>
+        <span id="slow-count">2</span>
+        <span id="slow-caption">SLOW</span>
+      </button>
+      <button id="pause-btn" aria-label="일시정지">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <rect x="7" y="5" width="4" height="14" rx="1"></rect>
+          <rect x="13" y="5" width="4" height="14" rx="1"></rect>
+        </svg>
       </button>
     </div>
 
-    <!-- 6. Control buttons -->
+  <!-- 6. Control buttons -->
     <div id="controls">
       <button class="ctrl-btn" id="ctrl-left" aria-label="Left">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
@@ -845,24 +890,22 @@
       </button>
     </div>
 
-  </div><!-- #game-ui -->
+ </div><!-- #game-ui -->
 </div><!-- #app -->
 
-<!-- ══════════════════════════════════════════
-     SETTINGS BOTTOM SHEET (portal, outside #app)
-══════════════════════════════════════════ -->
+<!-- SETTINGS BOTTOM SHEET (portal, outside #app) -->
 <div id="settings-sheet">
   <div id="settings-backdrop"></div>
   <div id="settings-panel">
     <div class="sheet-handle"></div>
     <div class="sheet-header">
       <h3>설정</h3>
-      <button class="sheet-close" id="settings-close">✕</button>
+      <button class="sheet-close" id="settings-close">×</button>
     </div>
     <div class="sheet-row">
       <div>
         <div class="sheet-row-label">효과음</div>
-        <div class="sheet-row-sub">충돌 및 피드백 진동음</div>
+        <div class="sheet-row-sub">충돌 및 피드백 사운드</div>
       </div>
       <label class="toggle-wrap">
         <input type="checkbox" id="sfx-toggle" checked>
@@ -887,19 +930,26 @@
 </div>
 
 <script>
-// ═══════════════════════════════════════════════════════
-//  CONSTANTS & CONFIG
-// ═══════════════════════════════════════════════════════
-const CANVAS_H = 300;
+// CONSTANTS & CONFIG
+const CANVAS_RATIO = 1;
 const PLAYER_W = 26, PLAYER_H = 26, PLAYER_RADIUS = 6;
-const VX_ACCEL    = 1.2;
-const VX_FRICTION = 0.78;
+const VX_ACCEL    = 1.55;
+const VX_FRICTION = 0.8;
 const COMBO_MAX   = 10;
 
 const OBJ_RADIUS       = 14;
-const OBJ_SPAWN_MIN    = 26;
-const OBJ_SPEED_STEP   = 0.3;   // +px/frame per 400 score
-const OBJ_SPAWN_STEP   = 3;     // frames less per 200 score
+const OBJ_EDGE_PADDING = 42;
+const DEFAULT_MAX_SPAWN_GAP = 150;
+const DEFAULT_MIN_SPAWN_GAP = 24;
+const ACCEL_LEVEL_MAX_SPAWN_GAP = 115;
+const WAVE_TO_ACCEL_MAX_SPAWN_GAP = 82;
+const ACCEL_LEVEL_MIN_SPAWN_GAP = 48;
+const WAVE_TO_ACCEL_MIN_SPAWN_GAP = 32;
+const OBJ_SPAWN_MIN    = 30;
+const OBJ_SPEED_STEP   = 0.3;   // +px/frame per 60 score
+const OBJ_SPAWN_STEP   = 2;     // frames less per 32 score
+const CLUSTER_FOLLOWUP_DELAY = 18;
+const CLUSTER_FOLLOWUP_DELAY_LV18 = 28;
 
 const OBJ_COLORS = [
   { name: 'red',    fill: '#D85A30' },
@@ -911,8 +961,12 @@ const OBJ_SHAPES = ['circle', 'triangle', 'square'];
 const COLOR_FILLS = { red: '#D85A30', blue: '#378ADD', yellow: '#EF9F27' };
 
 function pickPatternForLevel(lv) {
-  const patterns = lv.patterns;
-  const weights  = lv.patternWeights;
+  let patterns = lv.patterns;
+  let weights  = lv.patternWeights;
+  if (lastSpawnPattern === 'cluster' && patterns.includes('cluster') && patterns.length > 1) {
+    patterns = patterns.filter(p => p !== 'cluster');
+    weights  = weights.filter((_, i) => lv.patterns[i] !== 'cluster');
+  }
   const total    = weights.reduce((s, w) => s + w, 0);
   let r = Math.random() * total;
   for (let i = 0; i < patterns.length; i++) {
@@ -922,103 +976,95 @@ function pickPatternForLevel(lv) {
   return patterns[patterns.length - 1];
 }
 
-// ── Visual themes ──
+// Visual themes
 const THEMES = {
   space: {
-    bg:          '#0a0a1a',
-    playerFill:  '#5B6FD4',
-    playerEye:   '#e8e8ff',
+    bg: '#0a0a1a',
+    playerFill: '#5B6FD4',
+    playerEye: '#e8e8ff',
     accentColor: '#6366f1',
     objects: [
-      { name:'red',    label:'붉은 별',   fill:'#D85A30', shape:'star'   },
-      { name:'blue',   label:'파란 행성', fill:'#378ADD', shape:'planet' },
-      { name:'yellow', label:'금성',      fill:'#EF9F27', shape:'circle' },
+      { name:'red', label:'붉은 별', fill:'#D85A30', shape:'star' },
+      { name:'blue', label:'푸른 행성', fill:'#378ADD', shape:'planet' },
+      { name:'yellow', label:'황금 구체', fill:'#EF9F27', shape:'circle' },
     ],
   },
   neon: {
-    bg:          '#0f0f0f',
-    playerFill:  '#C026D3',
-    playerEye:   '#f9d4ff',
+    bg: '#0f0f0f',
+    playerFill: '#C026D3',
+    playerEye: '#f9d4ff',
     accentColor: '#ec4899',
     objects: [
-      { name:'red',    label:'레드 큐브',   fill:'#E24B4A', shape:'square'  },
-      { name:'blue',   label:'사이언 링',   fill:'#378ADD', shape:'ring'    },
+      { name:'red', label:'레드 큐브', fill:'#E24B4A', shape:'square' },
+      { name:'blue', label:'사이언 링', fill:'#378ADD', shape:'ring' },
       { name:'yellow', label:'옐로 다이아', fill:'#EF9F27', shape:'diamond' },
     ],
   },
   forest: {
-    bg:          '#1a2710',
-    playerFill:  '#3D7A1F',
-    playerEye:   '#d4f7b8',
+    bg: '#1a2710',
+    playerFill: '#3D7A1F',
+    playerEye: '#d4f7b8',
     accentColor: '#22c55e',
     objects: [
-      { name:'red',    label:'독버섯',   fill:'#D85A30', shape:'mushroom' },
-      { name:'blue',   label:'물방울',   fill:'#378ADD', shape:'drop'     },
-      { name:'yellow', label:'황금 열매',fill:'#BA7517', shape:'fruit'    },
+      { name:'red', label:'붉은 버섯', fill:'#D85A30', shape:'mushroom' },
+      { name:'blue', label:'푸른 물방울', fill:'#378ADD', shape:'drop' },
+      { name:'yellow', label:'황금 열매', fill:'#BA7517', shape:'fruit' },
     ],
   },
 };
 
-// ── Rule pool (kept for flash animation backward compat) ──
+// Rule pool (kept for flash animation backward compat)
 const RULE_POOL = [
-  // Color sequence conditions
-  { id:'seq_red',         desc:'빨간 것 수집 → 보너스',    icon:'●', type:'color',     value:'red'      },
-  { id:'seq_blue',        desc:'파란 것 수집 → 보너스',    icon:'●', type:'color',     value:'blue'     },
-  { id:'seq_yellow',      desc:'노란 것 수집 → 보너스',    icon:'●', type:'color',     value:'yellow'   },
-  // Shape sequence conditions
-  { id:'seq_circle',      desc:'원형 수집 → 보너스',       icon:'●', type:'shape',     value:'circle'   },
-  { id:'seq_tri',         desc:'삼각형 수집 → 보너스',     icon:'▲', type:'shape',     value:'triangle' },
-  { id:'seq_square',      desc:'사각형 수집 → 보너스',     icon:'■', type:'shape',     value:'square'   },
-  // Motion conditions
-  { id:'seq_moving',      desc:'움직이는 것 수집 → 보너스',icon:'~', type:'motion',    value:'moving'   },
-  { id:'seq_still',       desc:'멈춘 것 수집 → 보너스',    icon:'·', type:'motion',    value:'still'    },
-  // AND compound conditions
-  { id:'and_red_circle',  desc:'빨간 원 수집 → 보너스',   icon:'●', type:'and',       color:'red',   shape:'circle'   },
-  { id:'and_blue_tri',    desc:'파란 삼각형 수집 → 보너스',icon:'▲', type:'and',       color:'blue',  shape:'triangle' },
-  { id:'and_yellow_sq',   desc:'노란 사각형 수집 → 보너스',icon:'■', type:'and',       color:'yellow',shape:'square'   },
-  { id:'and_red_sq',      desc:'빨간 사각형 수집 → 보너스',icon:'■', type:'and',       color:'red',   shape:'square'   },
-  // NOT conditions
-  { id:'not_red',         desc:'빨간색 외 수집 → 보너스',  icon:'●', type:'not_color', value:'red'      },
-  { id:'not_blue',        desc:'파란색 외 수집 → 보너스',  icon:'●', type:'not_color', value:'blue'     },
-  { id:'not_circle',      desc:'원형 외 수집 → 보너스',    icon:'●', type:'not_shape', value:'circle'   },
-  { id:'not_moving',      desc:'정지 것 수집 → 보너스',    icon:'~', type:'not_motion',value:'moving'   },
+  { id:'seq_red', desc:'빨간 오브젝트 수집 보너스', icon:'R', type:'color', value:'red' },
+  { id:'seq_blue', desc:'파란 오브젝트 수집 보너스', icon:'B', type:'color', value:'blue' },
+  { id:'seq_yellow', desc:'노란 오브젝트 수집 보너스', icon:'Y', type:'color', value:'yellow' },
+  { id:'seq_circle', desc:'원형 오브젝트 수집 보너스', icon:'O', type:'shape', value:'circle' },
+  { id:'seq_tri', desc:'삼각 오브젝트 수집 보너스', icon:'T', type:'shape', value:'triangle' },
+  { id:'seq_square', desc:'사각 오브젝트 수집 보너스', icon:'S', type:'shape', value:'square' },
+  { id:'seq_moving', desc:'움직이는 오브젝트 수집 보너스', icon:'~', type:'motion', value:'moving' },
+  { id:'seq_still', desc:'정지 오브젝트 수집 보너스', icon:'P', type:'motion', value:'still' },
+  { id:'and_red_circle', desc:'빨간 원형 수집 보너스', icon:'RO', type:'and', color:'red', shape:'circle' },
+  { id:'and_blue_tri', desc:'파란 삼각 수집 보너스', icon:'BT', type:'and', color:'blue', shape:'triangle' },
+  { id:'and_yellow_sq', desc:'노란 사각 수집 보너스', icon:'YS', type:'and', color:'yellow', shape:'square' },
+  { id:'and_red_sq', desc:'빨간 사각 수집 보너스', icon:'RS', type:'and', color:'red', shape:'square' },
+  { id:'not_red', desc:'빨강 제외 수집 보너스', icon:'!R', type:'not_color', value:'red' },
+  { id:'not_blue', desc:'파랑 제외 수집 보너스', icon:'!B', type:'not_color', value:'blue' },
+  { id:'not_circle', desc:'원형 제외 수집 보너스', icon:'!O', type:'not_shape', value:'circle' },
+  { id:'not_moving', desc:'이동체 제외 수집 보너스', icon:'!~', type:'not_motion', value:'moving' },
 ];
 
-// ── 20 Levels — unified config ──
+// 20 Levels unified config
 const LEVELS = [
-  { lv:1,  title:'첫 수집',  theme:'space',  phase:0, targetScore:30,  speedBase:2.0, lives:3, patterns:['straight'],                              patternWeights:[1],                   condition:'free_collect',   conditionConfig:{},                              spawnInterval:60 },
-  { lv:2,  title:'감 잡기',  theme:'space',  phase:0, targetScore:40,  speedBase:2.2, lives:3, patterns:['straight'],                              patternWeights:[1],                   condition:'free_collect',   conditionConfig:{},                              spawnInterval:56 },
-  { lv:3,  title:'흔들림',   theme:'space',  phase:0, targetScore:50,  speedBase:2.2, lives:3, patterns:['straight','wave'],                       patternWeights:[0.6,0.4],             condition:'free_collect',   conditionConfig:{},                              spawnInterval:54 },
-  { lv:4,  title:'파도',     theme:'space',  phase:0, targetScore:60,  speedBase:2.4, lives:3, patterns:['straight','wave'],                       patternWeights:[0.4,0.6],             condition:'free_collect',   conditionConfig:{},                              spawnInterval:52 },
-  { lv:5,  title:'순서 시작',theme:'neon',   phase:1, targetScore:80,  speedBase:2.4, lives:3, patterns:['straight','accelerate'],                 patternWeights:[0.5,0.5],             condition:'color_sequence', conditionConfig:{sequence:['red','blue']},         spawnInterval:50 },
-  { lv:6,  title:'가속',     theme:'neon',   phase:1, targetScore:90,  speedBase:2.6, lives:3, patterns:['wave','accelerate'],                     patternWeights:[0.5,0.5],             condition:'color_sequence', conditionConfig:{sequence:['red','blue']},         spawnInterval:48 },
-  { lv:7,  title:'지그재그', theme:'neon',   phase:1, targetScore:100, speedBase:2.6, lives:3, patterns:['wave','zigzag'],                         patternWeights:[0.4,0.6],             condition:'color_sequence', conditionConfig:{sequence:['red','blue','yellow']}, spawnInterval:46 },
-  { lv:8,  title:'연속타',   theme:'neon',   phase:1, targetScore:110, speedBase:2.8, lives:3, patterns:['zigzag','accelerate'],                   patternWeights:[0.5,0.5],             condition:'streak_collect', conditionConfig:{target:'blue',count:3},           spawnInterval:44 },
-  { lv:9,  title:'추적',     theme:'neon',   phase:1, targetScore:120, speedBase:2.8, lives:3, patterns:['chase','zigzag'],                        patternWeights:[0.5,0.5],             condition:'color_sequence', conditionConfig:{sequence:['red','blue','yellow']}, spawnInterval:42 },
-  { lv:10, title:'입체감',   theme:'neon',   phase:1, targetScore:140, speedBase:3.0, lives:3, patterns:['chase','accelerate','zigzag'],            patternWeights:[0.4,0.3,0.3],         condition:'streak_collect', conditionConfig:{target:'yellow',count:3},         spawnInterval:40 },
-  { lv:11, title:'교차',     theme:'forest', phase:2, targetScore:150, speedBase:3.0, lives:3, patterns:['chase','wave'],                          patternWeights:[0.5,0.5],             condition:'alternating',    conditionConfig:{},                              spawnInterval:38 },
-  { lv:12, title:'분열',     theme:'forest', phase:2, targetScore:160, speedBase:3.2, lives:3, patterns:['split','wave'],                          patternWeights:[0.6,0.4],             condition:'alternating',    conditionConfig:{},                              spawnInterval:36 },
-  { lv:13, title:'한계',     theme:'forest', phase:2, targetScore:180, speedBase:3.2, lives:3, patterns:['split','zigzag'],                        patternWeights:[0.5,0.5],             condition:'count_limit',    conditionConfig:{limit:2},                       spawnInterval:35 },
-  { lv:14, title:'페이크',   theme:'forest', phase:2, targetScore:200, speedBase:3.6, lives:3, patterns:['fake','split'],                          patternWeights:[0.5,0.5],             condition:'count_limit',    conditionConfig:{limit:2},                       spawnInterval:33 },
-  { lv:15, title:'타이머',   theme:'forest', phase:2, targetScore:230, speedBase:3.8, lives:3, patterns:['fake','chase'],                          patternWeights:[0.5,0.5],             condition:'time_window',    conditionConfig:{windowMs:1500},                 spawnInterval:31 },
-  { lv:16, title:'군집',     theme:'space',  phase:3, targetScore:250, speedBase:3.8, lives:3, patterns:['cluster','chase'],                       patternWeights:[0.5,0.5],             condition:'color_sequence', conditionConfig:{sequence:['red','blue','yellow']}, spawnInterval:30 },
-  { lv:17, title:'폭풍',     theme:'space',  phase:3, targetScore:270, speedBase:4.0, lives:3, patterns:['cluster','split','fake'],                patternWeights:[0.4,0.3,0.3],         condition:'streak_collect', conditionConfig:{target:'blue',count:5},           spawnInterval:29 },
-  { lv:18, title:'혼돈',     theme:'neon',   phase:3, targetScore:300, speedBase:4.2, lives:3, patterns:['cluster','fake','chase'],                patternWeights:[0.35,0.35,0.3],       condition:'count_limit',    conditionConfig:{limit:1},                       spawnInterval:28 },
-  { lv:19, title:'극한',     theme:'neon',   phase:3, targetScore:340, speedBase:4.6, lives:3, patterns:['cluster','fake','split','chase'],        patternWeights:[0.25,0.25,0.25,0.25], condition:'time_window',    conditionConfig:{windowMs:1200},                 spawnInterval:28 },
-  { lv:20, title:'마스터',   theme:'space',  phase:3, targetScore:400, speedBase:5.0, lives:3, patterns:['cluster','fake','split','chase','zigzag'],patternWeights:[0.2,0.2,0.2,0.2,0.2],condition:'alternating',    conditionConfig:{},                              spawnInterval:26 },
+  { lv:1, title:'첫 수집', theme:'space', phase:0, targetScore:120, speedBase:2.0, lives:3, patterns:['straight'], patternWeights:[1], condition:'free_collect', conditionConfig:{}, spawnInterval:60 },
+  { lv:2, title:'감 익히기', theme:'space', phase:0, targetScore:145, speedBase:2.2, lives:3, patterns:['straight'], patternWeights:[1], condition:'free_collect', conditionConfig:{}, spawnInterval:56 },
+  { lv:3, title:'흔들림', theme:'space', phase:0, targetScore:170, speedBase:2.2, lives:3, patterns:['straight','wave'], patternWeights:[0.6,0.4], condition:'free_collect', conditionConfig:{}, spawnInterval:54 },
+  { lv:4, title:'파도', theme:'space', phase:0, targetScore:200, speedBase:2.4, lives:3, patterns:['straight','wave'], patternWeights:[0.4,0.6], condition:'free_collect', conditionConfig:{}, spawnInterval:52 },
+  { lv:5, title:'속도 시작', theme:'neon', phase:1, targetScore:225, speedBase:2.4, lives:3, patterns:['straight','accelerate'], patternWeights:[0.5,0.5], condition:'free_collect', conditionConfig:{}, spawnInterval:50 },
+  { lv:6, title:'가속', theme:'neon', phase:1, targetScore:250, speedBase:2.6, lives:3, patterns:['wave','accelerate'], patternWeights:[0.5,0.5], condition:'free_collect', conditionConfig:{}, spawnInterval:48 },
+  { lv:7, title:'지그재그', theme:'neon', phase:1, targetScore:275, speedBase:2.25, lives:3, patterns:['wave','zigzag'], patternWeights:[0.7,0.3], condition:'free_collect', conditionConfig:{}, spawnInterval:46 },
+  { lv:8, title:'연속선', theme:'neon', phase:1, targetScore:300, speedBase:2.45, lives:3, patterns:['zigzag','accelerate'], patternWeights:[0.35,0.65], condition:'free_collect', conditionConfig:{}, spawnInterval:44 },
+  { lv:9, title:'추적', theme:'neon', phase:1, targetScore:330, speedBase:2.45, lives:3, patterns:['chase','zigzag'], patternWeights:[0.65,0.35], condition:'free_collect', conditionConfig:{}, spawnInterval:42 },
+  { lv:10, title:'입체감', theme:'neon', phase:1, targetScore:360, speedBase:2.6, lives:3, patterns:['chase','accelerate','zigzag'], patternWeights:[0.45,0.4,0.15], condition:'free_collect', conditionConfig:{}, spawnInterval:40 },
+  { lv:11, title:'교감', theme:'forest', phase:2, targetScore:390, speedBase:2.7, lives:3, patterns:['chase','wave'], patternWeights:[0.35,0.65], condition:'free_collect', conditionConfig:{}, spawnInterval:38 },
+  { lv:12, title:'교란', theme:'forest', phase:2, targetScore:420, speedBase:2.8, lives:3, patterns:['wave','chase'], patternWeights:[0.75,0.25], condition:'free_collect', conditionConfig:{}, spawnInterval:36 },
+  { lv:13, title:'시계', theme:'forest', phase:2, targetScore:450, speedBase:2.95, lives:3, patterns:['wave','zigzag'], patternWeights:[0.65,0.35], condition:'free_collect', conditionConfig:{}, spawnInterval:35 },
+  { lv:14, title:'페이크', theme:'forest', phase:2, targetScore:480, speedBase:3.05, lives:3, patterns:['fake','wave'], patternWeights:[0.3,0.7], condition:'free_collect', conditionConfig:{}, spawnInterval:33 },
+  { lv:15, title:'타이밍', theme:'forest', phase:2, targetScore:515, speedBase:3.15, lives:3, patterns:['fake','chase'], patternWeights:[0.35,0.65], condition:'free_collect', conditionConfig:{}, spawnInterval:31 },
+  { lv:16, title:'규칙', theme:'space', phase:3, targetScore:720, speedBase:3.25, lives:3, patterns:['cluster','chase'], patternWeights:[0.35,0.65], condition:'free_collect', conditionConfig:{}, spawnInterval:30 },
+  { lv:17, title:'폭주', theme:'space', phase:3, targetScore:740, speedBase:3.4, lives:3, patterns:['cluster','fake','chase'], patternWeights:[0.45,0.2,0.35], condition:'free_collect', conditionConfig:{}, spawnInterval:29 },
+  { lv:18, title:'혼란', theme:'neon', phase:3, targetScore:760, speedBase:3.55, lives:3, patterns:['cluster','fake','chase'], patternWeights:[0.42,0.1,0.48], condition:'free_collect', conditionConfig:{}, spawnInterval:28 },
+  { lv:19, title:'극한', theme:'neon', phase:3, targetScore:800, speedBase:3.75, lives:3, patterns:['cluster','fake','chase'], patternWeights:[0.35,0.25,0.4], condition:'free_collect', conditionConfig:{}, spawnInterval:28 },
+  { lv:20, title:'마스터', theme:'space', phase:3, targetScore:860, speedBase:4.0, lives:3, patterns:['cluster','fake','chase','zigzag'], patternWeights:[0.35,0.2,0.25,0.2], condition:'free_collect', conditionConfig:{}, spawnInterval:26 },
 ];
 
 const PHASE_NAMES = ['입문', '적응', '심화', '마스터'];
 
-// ═══════════════════════════════════════════════════════
-//  SAVE / PROGRESS (localStorage)
-// ═══════════════════════════════════════════════════════
+// SAVE / PROGRESS (localStorage)
 const SAVE_KEY = 'cr_save';
 
 function defaultSave() {
   return {
     unlockedUpTo: 1,
-    stars:        new Array(20).fill(0),
     bestScores:   new Array(20).fill(0),
     totalScore:   0,
     settings: { sfxEnabled: true, vibrationEnabled: true },
@@ -1031,10 +1077,9 @@ function loadSave() {
     if (raw) {
       const d = defaultSave();
       const s = JSON.parse(raw);
-      // Merge to ensure all fields exist even on old saves
+   // Merge to ensure all fields exist even on old saves
       return {
         unlockedUpTo: s.unlockedUpTo ?? d.unlockedUpTo,
-        stars:        s.stars        ?? d.stars,
         bestScores:   s.bestScores   ?? d.bestScores,
         totalScore:   s.totalScore   ?? d.totalScore,
         settings:     { ...d.settings, ...(s.settings || {}) },
@@ -1050,23 +1095,14 @@ function writeSave() {
 
 let save = loadSave();
 
-function calcStars(score, targetScore) {
-  if (score >= targetScore * 1.5) return 3;
-  if (score >= targetScore * 1.2) return 2;
-  if (score >= targetScore)       return 1;
-  return 0;
-}
-
-// ─── Haptic feedback ───────────────────────────────────
+// Haptic feedback
 function vibrate(pattern) {
   if (save.settings.vibrationEnabled && navigator.vibrate) {
     navigator.vibrate(pattern);
   }
 }
 
-// ═══════════════════════════════════════════════════════
-//  DOM REFS
-// ═══════════════════════════════════════════════════════
+// DOM REFS
 const canvas          = document.getElementById('gameCanvas');
 const ctx             = canvas.getContext('2d');
 const overlay         = document.getElementById('overlay');
@@ -1074,6 +1110,7 @@ const overlayTitle    = document.getElementById('overlay-title');
 const overlaySub      = document.getElementById('overlay-sub');
 const overlayScores   = document.getElementById('overlay-scores');
 const overlayBtn      = document.getElementById('overlay-btn');
+const overlaySelectBtn= document.getElementById('overlay-select-btn');
 const uiScore         = document.getElementById('ui-score');
 const uiCombo         = document.getElementById('ui-combo');
 const uiTarget        = document.getElementById('ui-target');
@@ -1082,6 +1119,7 @@ const ruleDesc        = document.getElementById('rule-desc');
 const ruleFlash       = document.getElementById('rule-flash');
 const ctrlLeft        = document.getElementById('ctrl-left');
 const ctrlRight       = document.getElementById('ctrl-right');
+const pauseBtn        = document.getElementById('pause-btn');
 
 const introOverlay    = document.getElementById('intro-overlay');
 const introLv         = document.getElementById('intro-lv');
@@ -1093,7 +1131,6 @@ const introCountdown  = document.getElementById('intro-countdown');
 
 const clearOverlay    = document.getElementById('clear-overlay');
 const clearLv         = document.getElementById('clear-lv');
-const clearStars      = document.getElementById('clear-stars');
 const clearScore      = document.getElementById('clear-score');
 const clearNextBtn    = document.getElementById('clear-next-btn');
 const clearSelectBtn  = document.getElementById('clear-select-btn');
@@ -1104,13 +1141,14 @@ const retryProg       = document.getElementById('retry-prog');
 const retryPct        = document.getElementById('retry-pct');
 const retryBtn        = document.getElementById('retry-btn');
 const retrySelBtn     = document.getElementById('retry-sel-btn');
+const pauseOverlay    = document.getElementById('pause-overlay');
+const pauseResumeBtn  = document.getElementById('pause-resume-btn');
 
 const levelSelectEl   = document.getElementById('level-select');
 const gameUiEl        = document.getElementById('game-ui');
 const lsBackBtn       = document.getElementById('ls-back-btn');
 const levelGridCont   = document.getElementById('level-grid-container');
 const lvProgressFill  = document.getElementById('level-progress-fill');
-const lsTotalStars    = document.getElementById('ls-total-stars');
 
 // Fever + Slow UI
 const feverTrack  = document.getElementById('fever-track');
@@ -1118,6 +1156,7 @@ const feverFill   = document.getElementById('fever-fill');
 const feverLabel  = document.getElementById('fever-label');
 const feverBarEl  = document.getElementById('fever-bar');
 const slowBtn     = document.getElementById('slow-btn');
+const slowCountEl = document.getElementById('slow-count');
 
 // Settings
 const settingsBtn     = document.getElementById('settings-btn');
@@ -1128,28 +1167,26 @@ const sfxToggle       = document.getElementById('sfx-toggle');
 const vibToggle       = document.getElementById('vibration-toggle');
 const dataResetBtn    = document.getElementById('data-reset-btn');
 
-// ═══════════════════════════════════════════════════════
-//  RESIZE CANVAS
-// ═══════════════════════════════════════════════════════
+// RESIZE CANVAS
 function resizeCanvas() {
   const wrap = canvas.parentElement;
   const dpr  = window.devicePixelRatio || 1;
   const cssW = wrap.clientWidth;
+  const cssH = Math.round(cssW * CANVAS_RATIO);
   canvas.width  = cssW * dpr;
-  canvas.height = CANVAS_H * dpr;
+  canvas.height = cssH * dpr;
   canvas.style.width  = cssW + 'px';
-  canvas.style.height = CANVAS_H + 'px';
+  canvas.style.height = cssH + 'px';
   ctx.scale(dpr, dpr);
 }
 resizeCanvas();
 window.addEventListener('resize', () => { resizeCanvas(); });
 
 function cw() { return canvas.parentElement.clientWidth; }
+function ch() { return canvas.parentElement.clientHeight; }
 
-// ═══════════════════════════════════════════════════════
-//  GAME STATE
-// ═══════════════════════════════════════════════════════
-let state = 'idle'; // 'idle' | 'intro' | 'play' | 'dead' | 'clear' | 'levelselect'
+// GAME STATE
+let state = 'idle'; // 'idle' | 'intro' | 'play' | 'paused' | 'dead' | 'clear' | 'levelselect'
 
 const keys   = { left: false, right: false };
 const player = { x: 0, y: 0, vx: 0, eyeBlink: 0 };
@@ -1164,6 +1201,7 @@ let lives     = 3;
 let best      = 0;
 let lastTime  = 0;
 let frameId   = null;
+let pausedAt  = 0;
 
 // Frame counters
 let frameCount    = 0;
@@ -1176,19 +1214,10 @@ let ruleFlashFrames = 0;
 let deathFrame      = -1;
 let feedbacks       = [];
 
-// ── Collection condition state ──
+// Collection condition state
 let activeCond = { type: 'free_collect' };  // current condition config
 // color_sequence
 let seqIdx = 0;
-// streak_collect
-let streakCurrent = 0;
-// alternating
-let altLast = null;
-// count_limit
-let countLimitCounts   = { red: 0, blue: 0, yellow: 0 };
-let countLimitResetAt  = 0;   // performance.now() timestamp for next reset
-// time_window — per-object; nothing extra at global level
-
 // Polish state
 let shakeFrames    = 0;    // bad-hit player shake (8 frames)
 let flashFrames    = 0;    // bad-hit canvas flash (8 frames)
@@ -1201,86 +1230,100 @@ let ruleFlashSlide = 0;    // rule-change slide: >0 slide-in, <0 slide-out phase
 let currentLevelIdx = 0;   // 0-based index into LEVELS
 let introTimer      = null; // setTimeout handle for intro countdown
 
-// ── Fever state ──
+// Fever state
 let feverActive   = false;  // is fever mode on?
-let feverFrames   = 0;      // frames remaining in fever (600 = 10s)
-const FEVER_DURATION = 600;
+let feverFrames   = 0;      // frames remaining in fever (420 = 7s)
+const FEVER_DURATION = 420;
 const FEVER_COMBO    = 10;  // combo threshold to trigger
+const FEVER_SCORE_MUL = 1.35;
 
-// ── Slow state ──
+// Slow state
 let slowCharges   = 2;      // current charges (max 3)
 let slowActive    = false;  // is slow currently running?
 let slowFrames    = 0;      // frames remaining in current slow (180 = 3s)
+let slowFadeFrames = 0;     // frames remaining in post-slow ease-out transition
 let totalCollects = 0;      // running collect counter for recharge threshold
-const SLOW_DURATION  = 180;
-const SLOW_SPEED_MUL = 0.25;
+const SLOW_DURATION    = 180;
+const SLOW_SPEED_MUL   = 0.25;
+const SLOW_FADE_DURATION = 60; // frames to ease back to normal speed after slow ends (~1s)
 const SLOW_RECHARGE_EVERY = 20; // collects per +1 charge
 
-// ── Mission state ──
+// Mission state
 let activeMission       = null;   // current mission object or null
 let missionSpawnFrame   = 0;      // frameCount when next mission spawns
-let missionCompleteFrame= -1;     // frame when completion flash ends (–1 = not completing)
+let missionCompleteFrame= -1;     // frame when completion flash ends (?? = not completing)
 let missionCollectsSinceCondChange = 0; // for collect_after_rule_change
-let missionNoMoveLastX  = null;   // for no_move: player x at last collect
 let missionsThisLevel   = 0;      // total completed this level
+let lastSpawnX          = null;   // previous spawned object center x
+let lastSpawnPattern    = null;   // previous spawned pattern
 
-// ═══════════════════════════════════════════════════════
-//  UTILITY
-// ═══════════════════════════════════════════════════════
+// UTILITY
 function randInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 function lerp(a, b, t) { return a + (b - a) * t; }
+function toWholeScore(value) {
+  return Number.isFinite(value) ? Math.max(0, Math.round(value)) : 0;
+}
 
-// ═══════════════════════════════════════════════════════
-//  LEVEL HELPERS — parameter accessors
-// ═══════════════════════════════════════════════════════
+// LEVEL HELPERS - parameter accessors
 function currentLevel() { return LEVELS[currentLevelIdx]; }
 
-// Speed: base + 0.3 per 40 score (scaled to new target range)
+function feverScoreMultiplier() {
+  if (!feverActive) return 1;
+  return FEVER_SCORE_MUL;
+}
+
+// Speed: base + 0.3 per 60 score
 function objFallSpeed() {
-  const base = currentLevel().speedBase + Math.floor(score / 40) * OBJ_SPEED_STEP;
+  const base = currentLevel().speedBase + Math.floor(score / 60) * OBJ_SPEED_STEP;
   if (slowActive) return base * SLOW_SPEED_MUL;
+  if (slowFadeFrames > 0) {
+  // ease-out: linearly interpolate from SLOW_SPEED_MUL back to 1.0
+    const t = slowFadeFrames / SLOW_FADE_DURATION; // 1 ??0 as fade progresses
+    const mul = SLOW_SPEED_MUL + (1 - SLOW_SPEED_MUL) * (1 - t);
+    return base * mul;
+  }
   if (feverActive) return base * 1.0; // fever doesn't change speed, only spawn rate
   return base;
 }
 
-// Spawn interval: base - 3 per 20 score, clamped to min
+// Spawn interval: base - 2 per 32 score, clamped to min
 function objSpawnInterval() {
   const lv = currentLevel();
-  const base = Math.max(OBJ_SPAWN_MIN, lv.spawnInterval - Math.floor(score / 20) * OBJ_SPAWN_STEP);
+  const base = Math.max(OBJ_SPAWN_MIN, lv.spawnInterval - Math.floor(score / 32) * OBJ_SPAWN_STEP);
   if (slowActive) return Math.round(base / SLOW_SPEED_MUL); // slow = fewer spawns too
+  if (slowFadeFrames > 0) {
+  // ease-out: linearly interpolate from slow-interval back to normal
+    const t = slowFadeFrames / SLOW_FADE_DURATION;
+    const slowBase = Math.round(base / SLOW_SPEED_MUL);
+    return Math.round(slowBase + (base - slowBase) * (1 - t));
+  }
   if (feverActive) return Math.max(OBJ_SPAWN_MIN, Math.round(base * 0.8)); // 20% faster spawns in fever
   return base;
 }
 
-// ═══════════════════════════════════════════════════════
-//  RULE HELPERS
-// ═══════════════════════════════════════════════════════
+// RULE HELPERS
 
-// ═══════════════════════════════════════════════════════
-//  COMBO BAR
-// ═══════════════════════════════════════════════════════
+// COMBO BAR
 function updateComboBar() {
-  // During drain animation, width is handled in update()
+ // During drain animation, width is handled in update()
   if (comboBarDrain > 0) return;
 
   const pct = Math.min(combo / COMBO_MAX, 1);
   comboFill.style.width = (pct * 100) + '%';
-  // Colours: blue 0-2, amber 3-5, green 6+
+ // Colours: blue 0-2, amber 3-5, green 6+
   if (combo < 3)      comboFill.style.background = '#378ADD';
   else if (combo < 6) comboFill.style.background = '#EF9F27';
   else                comboFill.style.background = '#1D9E75';
 
-  // Pulse when at max
+ // Pulse when at max
   if (combo >= COMBO_MAX) {
     comboBarPulse = 12;
   }
 }
 
-// ═══════════════════════════════════════════════════════
-//  LEVEL PROGRESS BAR
-// ═══════════════════════════════════════════════════════
+// LEVEL PROGRESS BAR
 const PHASE_COLORS = ['#1D9E75', '#378ADD', '#EF9F27', '#D85A30'];
 function updateLevelProgress() {
   const lv  = currentLevel();
@@ -1289,9 +1332,7 @@ function updateLevelProgress() {
   lvProgressFill.style.background = PHASE_COLORS[lv.phase] || '#1D9E75';
 }
 
-// ═══════════════════════════════════════════════════════
-//  PARTICLES
-// ═══════════════════════════════════════════════════════
+// PARTICLES
 function spawnParticles(x, y, color, count) {
   for (let i = 0; i < count; i++) {
     const angle = Math.random() * Math.PI * 2;
@@ -1306,9 +1347,7 @@ function spawnParticles(x, y, color, count) {
   }
 }
 
-// ═══════════════════════════════════════════════════════
-//  OBJECT FACTORY
-// ═══════════════════════════════════════════════════════
+// OBJECT FACTORY
 
 // Build a single object dict (shared by spawnObject, spawnCluster, split children)
 function makeObject(x, y, radius, pattern, sinOffset, splitCount, lv) {
@@ -1316,10 +1355,10 @@ function makeObject(x, y, radius, pattern, sinOffset, splitCount, lv) {
   const theme  = THEMES[lv.theme] || THEMES.space;
   const objDef = theme.objects[randInt(0, theme.objects.length - 1)];
 
-  const ZIGZAG_VX = 2.5;
+  const ZIGZAG_VX = 2.1;
   const FAKE_VX   = 2.0;
 
-  // 'moving' flag: true for patterns that drift horizontally (for motion-rule)
+ // 'moving' flag: true for patterns that drift horizontally (for motion-rule)
   const moving = ['wave', 'zigzag', 'chase', 'fake', 'cluster'].includes(pattern);
 
   return {
@@ -1340,8 +1379,47 @@ function makeObject(x, y, radius, pattern, sinOffset, splitCount, lv) {
     zigzagTimer:   0,
     fakeDone:      false,
     fakeThreshold: 0,  // set after spawn once we know the canvas height
+    fallMul:       1,
+    noLifeLossOnMiss: false,
     spawnTime:     performance.now(),
   };
+}
+
+function pickSpawnX(lv, w, pattern, extraPad = 0) {
+  const minX = 22 + OBJ_RADIUS + OBJ_EDGE_PADDING + extraPad;
+  const maxX = w - 22 - OBJ_RADIUS - OBJ_EDGE_PADDING - extraPad;
+  if (lastSpawnX !== null) {
+    const maxGap =
+      pattern === 'accelerate' && lastSpawnPattern === 'wave'
+        ? WAVE_TO_ACCEL_MAX_SPAWN_GAP
+        : (lv.patterns.includes('accelerate') ? ACCEL_LEVEL_MAX_SPAWN_GAP : (lv.lv >= 7 ? DEFAULT_MAX_SPAWN_GAP : null));
+    const minGap =
+      pattern === 'accelerate' && lastSpawnPattern === 'wave'
+        ? WAVE_TO_ACCEL_MIN_SPAWN_GAP
+        : (lv.patterns.includes('accelerate') ? ACCEL_LEVEL_MIN_SPAWN_GAP : (lv.lv >= 7 ? DEFAULT_MIN_SPAWN_GAP : null));
+    if (maxGap !== null && minGap !== null) {
+      const constrainedMin = Math.max(minX, lastSpawnX - maxGap);
+      const constrainedMax = Math.min(maxX, lastSpawnX + maxGap);
+      const leftMin  = constrainedMin;
+      const leftMax  = Math.min(constrainedMax, lastSpawnX - minGap);
+      const rightMin = Math.max(constrainedMin, lastSpawnX + minGap);
+      const rightMax = constrainedMax;
+      const leftLen  = Math.max(0, leftMax - leftMin + 1);
+      const rightLen = Math.max(0, rightMax - rightMin + 1);
+      const totalLen = leftLen + rightLen;
+
+      if (totalLen > 0) {
+        const pick = randInt(1, totalLen);
+        if (pick <= leftLen) return randInt(leftMin, leftMax);
+        return randInt(rightMin, rightMax);
+      }
+
+      if (constrainedMin <= constrainedMax) {
+        return randInt(constrainedMin, constrainedMax);
+      }
+    }
+  }
+  return randInt(minX, maxX);
 }
 
 function spawnObject() {
@@ -1352,25 +1430,28 @@ function spawnObject() {
 
   if (pattern === 'cluster') {
     spawnCluster(lv);
-    return;
+    return pattern;
   }
 
-  const x   = randInt(22 + OBJ_RADIUS, w - 22 - OBJ_RADIUS);
+  const x   = pickSpawnX(lv, w, pattern);
   const obj = makeObject(x, -OBJ_RADIUS - 10, OBJ_RADIUS, pattern,
                          Math.random() * Math.PI * 2, 0, lv);
-  obj.fakeThreshold = CANVAS_H * 0.35;
+  obj.fakeThreshold = ch() * 0.35;
   objects.push(obj);
+  lastSpawnX = x;
+  lastSpawnPattern = pattern;
+  return pattern;
 }
 
 function spawnCluster(lv) {
   const w       = cw();
-  const cx      = randInt(22 + OBJ_RADIUS + 50, w - 22 - OBJ_RADIUS - 50);
-  const offsets = [-50, 0, 50];
+  const cx      = pickSpawnX(lv, w, 'cluster', 36);
+  const offsets = [-36, 0, 36];
   offsets.forEach((dx, i) => {
     const x   = Math.max(OBJ_RADIUS + 4, Math.min(w - OBJ_RADIUS - 4, cx + dx));
-    const obj = makeObject(x, -OBJ_RADIUS - 10, OBJ_RADIUS, 'wave',
-                           i * 1.0, 0, lv);
-    obj.fakeThreshold = CANVAS_H * 0.35;
+    const obj = makeObject(x, -OBJ_RADIUS - 10 - (i * 26), OBJ_RADIUS, 'straight',
+                           0, 0, lv);
+    obj.fakeThreshold = ch() * 0.35;
     objects.push(obj);
   });
 }
@@ -1391,35 +1472,35 @@ function spawnSplitChildren(parent, lv) {
     );
     obj.color = { ...parent.color };
     obj.shape = parent.shape;
-    obj.fakeThreshold = CANVAS_H * 0.35;
+    obj.fakeThreshold = ch() * 0.35;
+    obj.fallMul = 0.72;
+    obj.noLifeLossOnMiss = true;
     objects.push(obj);
   });
 }
 
-// ═══════════════════════════════════════════════════════
-//  OBJECT MOVEMENT — pattern dispatcher
-// ═══════════════════════════════════════════════════════
+// OBJECT MOVEMENT - pattern dispatcher
 function updateObject(obj, fallSpeed) {
   const w = cw();
-
+  const effFallSpeed = fallSpeed * (obj.fallMul || 1);
   switch (obj.pattern) {
 
     case 'straight':
     default:
-      obj.y += fallSpeed;
+      obj.y += effFallSpeed;
       break;
 
     case 'wave':
       obj.sinOffset += 0.06;
-      obj.x = obj.baseX + Math.sin(obj.sinOffset) * 40;
+      obj.x = obj.baseX + Math.sin(obj.sinOffset) * 30;
       obj.x = Math.max(obj.r + 2, Math.min(w - obj.r - 2, obj.x));
-      obj.y += fallSpeed;
+      obj.y += effFallSpeed;
       break;
 
     case 'accelerate': {
-      const maxSpeed = fallSpeed * 2.5;
-      if (obj.speed === null) obj.speed = fallSpeed;
-      obj.speed = Math.min(obj.speed + 0.04, maxSpeed);
+      const maxSpeed = effFallSpeed * 2.5;
+      if (obj.speed === null) obj.speed = effFallSpeed;
+      obj.speed = Math.min(obj.speed + 0.03, maxSpeed);
       obj.y += obj.speed;
       break;
     }
@@ -1433,17 +1514,17 @@ function updateObject(obj, fallSpeed) {
       obj.x += obj.vx;
       if (obj.x - obj.r < 0)  { obj.x = obj.r;      obj.vx =  Math.abs(obj.vx); obj.zigzagTimer = 0; }
       if (obj.x + obj.r > w)  { obj.x = w - obj.r;  obj.vx = -Math.abs(obj.vx); obj.zigzagTimer = 0; }
-      obj.y += fallSpeed;
+      obj.y += effFallSpeed;
       break;
 
     case 'chase':
-      obj.x += (player.x + PLAYER_W / 2 - obj.x) * 0.018;
-      obj.y += fallSpeed;
+      obj.x += (player.x + PLAYER_W / 2 - obj.x) * (currentLevel().lv === 18 ? 0.0105 : 0.014);
+      obj.y += effFallSpeed;
       break;
 
     case 'split':
-      // Movement is straight; splitting happens in handleCollision
-      obj.y += fallSpeed;
+   // Movement is straight; splitting happens in handleCollision
+      obj.y += effFallSpeed;
       break;
 
     case 'fake':
@@ -1454,28 +1535,24 @@ function updateObject(obj, fallSpeed) {
       obj.x += obj.vx;
       if (obj.x - obj.r < 0)  { obj.x = obj.r;      obj.vx =  Math.abs(obj.vx); }
       if (obj.x + obj.r > w)  { obj.x = w - obj.r;  obj.vx = -Math.abs(obj.vx); }
-      obj.y += fallSpeed;
+      obj.y += effFallSpeed;
       break;
 
     case 'cluster':
-      // cluster objects move as wave (assigned at spawn); same as wave
+   // cluster objects move as wave (assigned at spawn); same as wave
       obj.sinOffset += 0.06;
-      obj.x = obj.baseX + Math.sin(obj.sinOffset) * 40;
+      obj.x = obj.baseX + Math.sin(obj.sinOffset) * 30;
       obj.x = Math.max(obj.r + 2, Math.min(w - obj.r - 2, obj.x));
-      obj.y += fallSpeed;
+      obj.y += effFallSpeed;
       break;
   }
 }
 
-// ═══════════════════════════════════════════════════════
-//  COLLECTION CONDITION ENGINE
-// ═══════════════════════════════════════════════════════
+// COLLECTION CONDITION ENGINE
 // Returns { bonus: bool, penalise: bool, label: string }
 function evaluateCondition(obj) {
   const c    = activeCond;
   const col  = obj.color.name;
-  const now  = performance.now();
-
   switch (c.type) {
 
     case 'free_collect':
@@ -1485,58 +1562,10 @@ function evaluateCondition(obj) {
       const expected = c.sequence[seqIdx];
       if (col === expected) {
         seqIdx = (seqIdx + 1) % c.sequence.length;
-        return { bonus: true, penalise: false, label: '✓' };
+        return { bonus: true, penalise: false, label: 'OK' };
       } else {
         seqIdx = 0;
         return { bonus: false, penalise: false, label: '+10' };
-      }
-    }
-
-    case 'streak_collect': {
-      const streakColor = c.target || c.color;
-      if (col === streakColor) {
-        streakCurrent++;
-        if (streakCurrent >= c.count) {
-          streakCurrent = 0;
-          return { bonus: true, penalise: false, label: `🔥×${c.count}` };
-        }
-        return { bonus: false, penalise: false, label: `${streakCurrent}/${c.count}` };
-      } else {
-        streakCurrent = 0;
-        return { bonus: false, penalise: false, label: '+10' };
-      }
-    }
-
-    case 'alternating': {
-      if (altLast === null || col !== altLast) {
-        altLast = col;
-        return { bonus: true, penalise: false, label: '✓' };
-      } else {
-        altLast = col;
-        combo = 0;
-        if (comboBarDrain === 0) comboBarDrain = 10;
-        return { bonus: false, penalise: true, label: '✕' };
-      }
-    }
-
-    case 'count_limit': {
-      const lim = c.limit || c.limitPerColor || 2;
-      countLimitCounts[col] = (countLimitCounts[col] || 0) + 1;
-      if (countLimitCounts[col] > lim) {
-        combo = 0;
-        if (comboBarDrain === 0) comboBarDrain = 10;
-        return { bonus: false, penalise: true, label: '제한!' };
-      }
-      return { bonus: true, penalise: false, label: '+10' };
-    }
-
-    case 'time_window': {
-      const effectiveMs = slowActive ? (c.windowMs || 1500) / SLOW_SPEED_MUL : (c.windowMs || 1500);
-      const elapsed = now - obj.spawnTime;
-      if (elapsed <= effectiveMs) {
-        return { bonus: true, penalise: false, label: '⚡' };
-      } else {
-        return { bonus: false, penalise: false, label: '느림' };
       }
     }
 
@@ -1548,7 +1577,7 @@ function evaluateCondition(obj) {
 function handleCollision(obj) {
   spawnParticles(obj.x, obj.y, obj.color.fill, 8);
 
-  // Split: spawn two smaller children before awarding score
+ // Split: spawn two smaller children before awarding score
   if (obj.pattern === 'split' && obj.splitCount === 0) {
     spawnSplitChildren(obj, currentLevel());
   }
@@ -1557,37 +1586,42 @@ function handleCollision(obj) {
   const py = player.y;
 
   const { bonus, penalise, label } = evaluateCondition(obj);
-  const feverMul = feverActive ? 3 : 1;
+  const feverMul = feverScoreMultiplier();
 
   if (bonus) {
     combo++;
     const multiplier = feverMul * Math.max(1, Math.floor(combo / 3) + 1);
-    const pts = 10 * multiplier;
+    const pts = Math.round(10 * multiplier);
     score += pts;
     if (score > best) best = score;
     player.eyeBlink = 200;
     vibrate(12);
-    const text = multiplier > 1 ? `+${pts} ×${multiplier}!` : `+${pts}`;
+    const text = `+${pts}`;
     feedbacks.push({ text, color: feverActive ? '#EF9F27' : '#1D9E75', alpha: 1, framesLeft: 22, ox: px, oy: py });
-    // Trigger fever when combo hits threshold (only if not already in fever)
+  // Trigger fever when combo hits threshold (only if not already in fever)
     if (!feverActive && combo >= FEVER_COMBO) activateFever();
   } else if (penalise) {
-    score += feverMul * 5;
+    const pts = Math.round(feverMul * 5);
+    score += pts;
     if (score > best) best = score;
     feedbacks.push({ text: label, color: '#D85A30', alpha: 1, framesLeft: 22, ox: px, oy: py });
     vibrate([10, 5, 10]);
   } else {
-    score += feverMul * 10;
+    const pts = Math.round(feverMul * 10);
+    score += pts;
     if (score > best) best = score;
-    feedbacks.push({ text: feverMul > 1 ? `+${feverMul * 10} ×${feverMul}` : '+10', color: '#EF9F27', alpha: 1, framesLeft: 22, ox: px, oy: py });
+    feedbacks.push({ text: `+${pts}`, color: '#EF9F27', alpha: 1, framesLeft: 22, ox: px, oy: py });
     vibrate(6);
   }
 
-  // Slow recharge: every SLOW_RECHARGE_EVERY collects = +1 charge
+  score = toWholeScore(score);
+  best  = toWholeScore(best);
+
+ // Slow recharge: every SLOW_RECHARGE_EVERY collects = +1 charge
   totalCollects++;
   if (totalCollects % SLOW_RECHARGE_EVERY === 0) gainSlowCharge();
 
-  // Advance active mission on every successful collect
+ // Advance active mission on every successful collect
   advanceMission(obj);
 
   renderConditionBar();
@@ -1595,38 +1629,27 @@ function handleCollision(obj) {
   updateUI();
 }
 
-// ═══════════════════════════════════════════════════════
-//  CONDITION BAR RENDERER
-// ═══════════════════════════════════════════════════════
+// CONDITION BAR RENDERER
 const COND_TINT = {
   free_collect: 'tint-free',
   color_sequence: 'tint-sequence',
-  streak_collect: 'tint-streak',
-  alternating:    'tint-alternating',
-  count_limit:    'tint-count',
-  time_window:    'tint-time',
 };
 
 const COLOR_KR = { red: '빨강', blue: '파랑', yellow: '노랑' };
 
-// ─── Mission pool ─────────────────────────────────────
+// Mission pool
 const MISSION_POOL = [
-  { id:'collect_n_total',          type:'collect_n_total',          desc:'오브젝트 {n}개 수집하기',        reward:30  },
-  { id:'collect_n_color_blue',     type:'collect_n_color',          desc:'파란 것 {n}개 연속 수집',        reward:50, meta:{ color:'blue'  } },
-  { id:'collect_n_color_red',      type:'collect_n_color',          desc:'빨간 것 {n}개 연속 수집',        reward:50, meta:{ color:'red'   } },
-  { id:'collect_n_color_yellow',   type:'collect_n_color',          desc:'노란 것 {n}개 연속 수집',        reward:50, meta:{ color:'yellow'} },
   { id:'survive_seconds',          type:'survive_seconds',          desc:'{n}초 동안 아무것도 놓치지 않기', reward:60  },
   { id:'combo_reach',              type:'combo_reach',              desc:'콤보 {n} 달성하기',             reward:40  },
-  { id:'collect_after_rule_change',type:'collect_after_rule_change',desc:'조건 바뀐 후 {n}개 연속 수집',  reward:70  },
-  { id:'no_move',                  type:'no_move',                  desc:'이동 없이 {n}개 수집',           reward:80  },
+  { id:'collect_after_rule_change',type:'collect_after_rule_change',desc:'조건 바뀐 뒤 {n}개 연속 수집',  reward:70  },
 ];
 
 // Missions available by phase (0–3): harder missions unlock later
 const MISSION_BY_PHASE = [
-  ['collect_n_total'],
-  ['collect_n_total','collect_n_color_blue','collect_n_color_red','survive_seconds','combo_reach'],
-  ['collect_n_color_blue','collect_n_color_red','collect_n_color_yellow','survive_seconds','combo_reach','no_move'],
-  ['collect_n_color_blue','collect_n_color_yellow','combo_reach','collect_after_rule_change','no_move','survive_seconds'],
+  ['survive_seconds'],
+  ['survive_seconds','combo_reach'],
+  ['survive_seconds','combo_reach'],
+  ['combo_reach','collect_after_rule_change','survive_seconds'],
 ];
 
 // Per-type target values scaled by phase
@@ -1636,7 +1659,6 @@ const MISSION_TARGETS = {
   survive_seconds:          [6,  8, 10, 12],
   combo_reach:              [4,  6,  8,  10],
   collect_after_rule_change:[2,  3,  3,  4],
-  no_move:                  [2,  3,  4,  5],
 };
 
 function pickMissionForLevel(lvNum) {
@@ -1668,10 +1690,10 @@ function renderConditionBar() {
   const comboEl  = document.getElementById('cond-combo-val');
   if (!ruleBar || !progress || !labelEl) return;
 
-  // Update combo counter
+ // Update combo counter
   if (comboEl) comboEl.textContent = combo;
 
-  // Swap tint class
+ // Swap tint class
   ruleBar.className = '';
   ruleBar.classList.add(COND_TINT[activeCond.type] || 'tint-free');
 
@@ -1681,7 +1703,7 @@ function renderConditionBar() {
 
     case 'free_collect':
       labelEl.textContent = '자유 수집';
-      progress.innerHTML = '<span style="font-size:11px;color:rgba(255,255,255,.5)">모든 오브젝트 수집 → 점수</span>';
+      progress.innerHTML = '<span style="font-size:11px;color:rgba(255,255,255,.5)">모든 오브젝트를 수집해 점수를 올리세요</span>';
       break;
 
     case 'color_sequence': {
@@ -1700,64 +1722,9 @@ function renderConditionBar() {
       break;
     }
 
-    case 'streak_collect': {
-      const scol = c.target || c.color || 'blue';
-      const fill = COLOR_FILLS[scol] || '#888';
-      labelEl.textContent = `${COLOR_KR[scol] || scol} ${c.count}연속`;
-      const dots = Array.from({ length: c.count }, (_, i) => {
-        const filled = i < streakCurrent;
-        return `<span style="width:9px;height:9px;border-radius:50%;display:inline-block;` +
-               (filled ? `background:${fill};` : `background:transparent;border:1.5px solid ${fill};opacity:.6;`) +
-               `"></span>`;
-      }).join('');
-      progress.innerHTML = dots;
-      break;
-    }
-
-    case 'alternating': {
-      labelEl.textContent = '교차 수집';
-      if (altLast === null) {
-        progress.innerHTML = '<span style="font-size:11px;color:rgba(255,255,255,.5)">아무 색이나 수집 →</span>';
-      } else {
-        const lastFill = COLOR_FILLS[altLast] || '#888';
-        // compute expected (any color other than last)
-        const others = Object.keys(COLOR_FILLS).filter(k => k !== altLast);
-        const otherDots = others.map(k =>
-          `<span style="width:9px;height:9px;border-radius:50%;display:inline-block;background:${COLOR_FILLS[k]};opacity:.8;"></span>`
-        ).join('');
-        progress.innerHTML =
-          `<span style="width:10px;height:10px;border-radius:50%;display:inline-block;background:${lastFill};"></span>` +
-          `<span style="color:rgba(255,255,255,.4);font-size:11px;margin:0 4px">→</span>` +
-          `<span style="display:inline-flex;gap:3px;align-items:center">${otherDots}</span>` +
-          `<span style="font-size:10px;color:rgba(255,255,255,.4);margin-left:3px">?</span>`;
-      }
-      break;
-    }
-
-    case 'count_limit': {
-      const lim2 = c.limit || c.limitPerColor || 2;
-      labelEl.textContent = `색당 최대 ${lim2}회`;
-      progress.innerHTML = Object.entries(COLOR_FILLS).map(([col, fill]) => {
-        const used = countLimitCounts[col] || 0;
-        const left = Math.max(0, lim2 - used);
-        const pips = Array.from({ length: lim2 }, (_, i) =>
-          `<span style="width:6px;height:6px;border-radius:50%;display:inline-block;` +
-          (i < left ? `background:${fill};` : `background:rgba(255,255,255,.15);`) +
-          `"></span>`
-        ).join('');
-        return `<span style="display:inline-flex;align-items:center;gap:2px;margin-right:4px">${pips}</span>`;
-      }).join('');
-      break;
-    }
-
-    case 'time_window': {
-      labelEl.textContent = `${(c.windowMs / 1000).toFixed(1)}초 안에 수집`;
-      progress.innerHTML = '<span style="font-size:11px;color:rgba(255,255,255,.55)">⏱ 타이머 링을 보세요</span>';
-      break;
-    }
   }
 
-  // Redraw condition icon
+ // Redraw condition icon
   drawConditionIcon(c);
 }
 
@@ -1774,7 +1741,7 @@ function drawConditionIcon(c) {
 
   switch (c.type) {
     case 'free_collect':
-      // Star burst
+   // Star burst
       for (let i = 0; i < 6; i++) {
         const a = (i / 6) * Math.PI * 2 - Math.PI / 2;
         ctx2.beginPath();
@@ -1784,7 +1751,7 @@ function drawConditionIcon(c) {
       }
       break;
     case 'color_sequence':
-      // Three stacked dots
+   // Three stacked dots
       [-5, 0, 5].forEach((dx, i) => {
         ctx2.globalAlpha = i === 0 ? 1 : 0.4 + i * 0.2;
         ctx2.beginPath();
@@ -1793,58 +1760,10 @@ function drawConditionIcon(c) {
       });
       ctx2.globalAlpha = 1;
       break;
-    case 'streak_collect': {
-      // Lightning bolt
-      ctx2.beginPath();
-      ctx2.moveTo(cx + 3, cy - r);
-      ctx2.lineTo(cx - 1, cy - 1);
-      ctx2.lineTo(cx + 2, cy - 1);
-      ctx2.lineTo(cx - 3, cy + r);
-      ctx2.lineTo(cx + 1, cy + 1);
-      ctx2.lineTo(cx - 2, cy + 1);
-      ctx2.closePath();
-      ctx2.fill();
-      break;
-    }
-    case 'alternating':
-      // Two-tone circle split
-      ctx2.beginPath();
-      ctx2.arc(cx, cy, r, -Math.PI / 2, Math.PI / 2);
-      ctx2.closePath();
-      ctx2.fill();
-      ctx2.globalAlpha = 0.35;
-      ctx2.beginPath();
-      ctx2.arc(cx, cy, r, Math.PI / 2, -Math.PI / 2);
-      ctx2.closePath();
-      ctx2.fill();
-      ctx2.globalAlpha = 1;
-      break;
-    case 'count_limit':
-      // Grid of 4 dots
-      [[cx-3,cy-3],[cx+3,cy-3],[cx-3,cy+3],[cx+3,cy+3]].forEach(([x,y]) => {
-        ctx2.beginPath();
-        ctx2.arc(x, y, 2, 0, Math.PI * 2);
-        ctx2.fill();
-      });
-      break;
-    case 'time_window':
-      // Clock face
-      ctx2.beginPath();
-      ctx2.arc(cx, cy, r, 0, Math.PI * 2);
-      ctx2.stroke();
-      ctx2.beginPath();
-      ctx2.moveTo(cx, cy);
-      ctx2.lineTo(cx, cy - r + 2);
-      ctx2.moveTo(cx, cy);
-      ctx2.lineTo(cx + r - 3, cy + 2);
-      ctx2.stroke();
-      break;
   }
 }
 
-// ═══════════════════════════════════════════════════════
-//  MISSION SYSTEM
-// ═══════════════════════════════════════════════════════
+// MISSION SYSTEM
 
 function renderMissionPill() {
   const pill    = document.getElementById('mission-pill');
@@ -1863,7 +1782,7 @@ function renderMissionPill() {
   descEl.textContent = m.desc;
   rwdEl.textContent  = `+${m.reward}`;
 
-  // progress bar — survive_seconds uses framesLeft ratio inverted
+ // progress bar: survive_seconds uses framesLeft ratio inverted
   let pct = 0;
   if (m.type === 'survive_seconds') {
     pct = m.framesLeft !== null
@@ -1880,10 +1799,11 @@ function completeMission() {
   const m = activeMission;
 
   score += m.reward;
+  score = toWholeScore(score);
   if (score > best) best = score;
   missionsThisLevel++;
 
-  // Burst particles from pill position (top-right of canvas)
+ // Burst particles from pill position (top-right of canvas)
   const w = cw();
   const bx = w - 30, by = 18;
   for (let i = 0; i < 12; i++) {
@@ -1898,7 +1818,7 @@ function completeMission() {
     });
   }
 
-  // Flash the pill green
+ // Flash the pill green
   const pill = document.getElementById('mission-pill');
   if (pill) {
     pill.classList.remove('flash');
@@ -1916,7 +1836,7 @@ function completeMission() {
   });
   vibrate([10, 5, 30]);
 
-  // Schedule next mission after 3s (180 frames) gap
+ // Schedule next mission after 3s (180 frames) gap
   activeMission = null;
   missionSpawnFrame = frameCount + 180;
   updateUI();
@@ -1924,11 +1844,11 @@ function completeMission() {
 
 function failMission() {
   activeMission = null;
-  // Reassign immediately (next frame tick)
+ // Reassign immediately (next frame tick)
   missionSpawnFrame = frameCount + 1;
 }
 
-// Called on every successful collect — advances mission progress
+// Called on every successful collect - advances mission progress
 function advanceMission(obj) {
   const m = activeMission;
   if (!m) return;
@@ -1948,7 +1868,7 @@ function advanceMission(obj) {
     }
 
     case 'combo_reach':
-      // progress mirrors current combo, checked passively in update()
+   // progress mirrors current combo, checked passively in update()
       m.progress = combo;
       break;
 
@@ -1959,23 +1879,8 @@ function advanceMission(obj) {
       }
       break;
 
-    case 'no_move': {
-      const cx = player.x + PLAYER_W / 2;
-      if (missionNoMoveLastX === null) {
-        missionNoMoveLastX = cx;
-        m.progress++;
-      } else if (Math.abs(cx - missionNoMoveLastX) <= 12) {
-        m.progress++;
-        missionNoMoveLastX = cx;
-      } else {
-        m.progress = 0;
-        missionNoMoveLastX = cx;
-      }
-      break;
-    }
-
     case 'survive_seconds':
-      // progress tracked via framesLeft countdown in update(); nothing here
+   // progress tracked via framesLeft countdown in update(); nothing here
       break;
   }
 
@@ -1984,7 +1889,7 @@ function advanceMission(obj) {
   }
 }
 
-// Called on every miss — fails time-sensitive missions
+// Called on every miss - fails time-sensitive missions
 function onMissMission() {
   if (!activeMission) return;
   if (activeMission.type === 'survive_seconds') {
@@ -1992,9 +1897,7 @@ function onMissMission() {
   }
 }
 
-// ═══════════════════════════════════════════════════════
-//  FEVER
-// ═══════════════════════════════════════════════════════
+// FEVER
 
 function activateFever() {
   if (feverActive) return;
@@ -2003,10 +1906,10 @@ function activateFever() {
   combo = 0;  // reset combo after fever triggers so bar doesn't instantly re-trigger
   vibrate([20, 10, 20, 10, 40]);
   feedbacks.push({
-    text: '⚡ FEVER!',
+    text: 'FEVER!',
     color: '#EF9F27',
     alpha: 1, framesLeft: 50,
-    ox: cw() / 2, oy: CANVAS_H / 2,
+    ox: cw() / 2, oy: ch() / 2,
   });
   renderFeverUI();
   updateComboBar();
@@ -2020,7 +1923,7 @@ function endFever() {
     text: 'FEVER END',
     color: '#aaa',
     alpha: 1, framesLeft: 30,
-    ox: cw() / 2, oy: CANVAS_H / 2,
+    ox: cw() / 2, oy: ch() / 2,
   });
   renderFeverUI();
   updateComboBar();
@@ -2028,15 +1931,15 @@ function endFever() {
 
 function renderFeverUI() {
   if (feverActive) {
-    // Hide normal combo bar, show fever track
+  // Hide normal combo bar, show fever track
     comboFill.parentElement.style.display  = 'none';
     feverTrack.classList.add('active');
     feverLabel.classList.add('active');
     feverBarEl.classList.add('active');
-    // Fever fill width = remaining time ratio
+  // Fever fill width = remaining time ratio
     const pct = (feverFrames / FEVER_DURATION) * 100;
     feverFill.style.width = pct.toFixed(1) + '%';
-    // Pulse rule-bar background between accent and gold
+  // Pulse rule-bar background between accent and gold
     const ruleBar = document.getElementById('rule-bar');
     if (ruleBar) ruleBar.style.transition = 'background .3s';
   } else {
@@ -2049,9 +1952,7 @@ function renderFeverUI() {
   }
 }
 
-// ═══════════════════════════════════════════════════════
-//  SLOW SKILL
-// ═══════════════════════════════════════════════════════
+// SLOW SKILL
 
 function activateSlow() {
   if (state !== 'play') return;
@@ -2066,13 +1967,8 @@ function activateSlow() {
 
 function renderSlowUI() {
   if (!slowBtn) return;
-  // Update charge dots
-  for (let i = 0; i < 2; i++) {
-    const dot = document.getElementById(`slow-c${i}`);
-    if (!dot) continue;
-    dot.classList.toggle('empty', i >= slowCharges);
-  }
-  // Active state
+  if (slowCountEl) slowCountEl.textContent = String(slowCharges);
+ // Active state
   slowBtn.classList.toggle('active', slowActive);
   slowBtn.classList.toggle('empty',  slowCharges <= 0 && !slowActive);
 }
@@ -2080,59 +1976,54 @@ function renderSlowUI() {
 function gainSlowCharge() {
   if (slowCharges >= 3) return;
   slowCharges++;
-  // Refill animation on the newly-filled dot
-  const dot = document.getElementById(`slow-c${slowCharges - 1}`);
-  if (dot) {
-    dot.classList.remove('empty', 'refill');
-    void dot.offsetWidth;
-    dot.classList.add('refill');
-    dot.addEventListener('animationend', () => dot.classList.remove('refill'), { once: true });
-  }
   renderSlowUI();
 }
 
-// ── Miss: object exited bottom uncollected ───────────────
+// Miss: object exited bottom uncollected
 function handleMiss(obj) {
-  lives = Math.max(0, lives - 1);
-  vibrate([20, 10, 20]);
+  const losesLife = !obj.noLifeLossOnMiss;
+  if (losesLife) {
+    lives = Math.max(0, lives - 1);
+    vibrate([20, 10, 20]);
+  }
 
-  // miss animation: downward ↓ label at exit x
-  misses.push({ x: obj.x, y: CANVAS_H - 20, alpha: 1, framesLeft: 28 });
+ // Miss animation: downward label at exit x
+  misses.push({ x: obj.x, y: ch() - 20, alpha: 1, framesLeft: 28 });
 
-  // Update life icons (renderLives handles animation via 'pop' class)
+ // Update life icons (renderLives handles animation via 'pop' class)
   renderLives();
 
-  // End fever on miss
+ // End fever on miss
   if (feverActive) endFever();
 
-  // Fail any active time-sensitive mission
+ // Fail any active time-sensitive mission
   onMissMission();
 
-  // screen flash + player shake
+ // screen flash + player shake
   shakeFrames = 8;
   flashFrames = 6;
 
   updateUI();
 
-  if (lives <= 0 && deathFrame < 0) {
+  if (losesLife && lives <= 0 && deathFrame < 0) {
     deathFrame = 8;
   }
 }
 
-// ═══════════════════════════════════════════════════════
-//  GAME INIT / RESET
-// ═══════════════════════════════════════════════════════
+// GAME INIT / RESET
 function initGame() {
   const lv = currentLevel();
   const w  = cw();
 
   player.x = w / 2 - PLAYER_W / 2;
-  player.y = CANVAS_H - 52;
+  player.y = ch() - 52;
   player.vx = 0;
   player.eyeBlink = 0;
 
   particles     = [];
   objects       = [];
+  lastSpawnX    = null;
+  lastSpawnPattern = null;
   feedbacks     = [];
   misses        = [];
   score         = 0;
@@ -2151,28 +2042,23 @@ function initGame() {
   ruleFlash.style.transform = 'translateY(-20px)';
   comboFill.style.transform = 'scaleY(1)';
 
-  // Set collection condition directly from level
+ // Set collection condition directly from level
   activeCond = { type: lv.condition, ...(lv.conditionConfig || {}) };
   ruleChangeFrame = frameCount + randInt(200, 400);
-  // Reset condition-specific state
+ // Reset condition-specific state
   seqIdx               = 0;
-  streakCurrent        = 0;
-  altLast              = null;
-  countLimitCounts     = { red: 0, blue: 0, yellow: 0 };
-  countLimitResetAt    = performance.now() + 10000;
-
   feverActive   = false;
   feverFrames   = 0;
-  slowActive    = false;
-  slowFrames    = 0;
-  slowCharges   = 2;
-  totalCollects = 0;
+  slowActive     = false;
+  slowFrames     = 0;
+  slowFadeFrames = 0;
+  slowCharges    = 2;
+  totalCollects  = 0;
 
   activeMission              = null;
   missionSpawnFrame          = frameCount + 480;  // 8s at ~60fps
   missionCompleteFrame       = -1;
   missionCollectsSinceCondChange = 0;
-  missionNoMoveLastX         = null;
   missionsThisLevel          = 0;
 
   uiTarget.textContent = lv.targetScore;
@@ -2185,12 +2071,14 @@ function initGame() {
 }
 
 function updateUI() {
+  score = toWholeScore(score);
+  best = toWholeScore(best);
   uiScore.textContent = score;
-  uiCombo.textContent = combo;
+  uiCombo.textContent = Math.max(0, Math.round(combo));
   updateComboBar();
   if (state === 'play') updateLevelProgress();
   renderLives();
-  // Combo counter in condition bar stays in sync
+ // Combo counter in condition bar stays in sync
   const ccv = document.getElementById('cond-combo-val');
   if (ccv) ccv.textContent = combo;
 }
@@ -2199,7 +2087,7 @@ function renderLives() {
   const el = document.getElementById('ui-lives');
   if (!el) return;
   const total = currentLevel ? (currentLevel().lives || 3) : 3;
-  // Only rebuild if count changed (avoids resetting animations)
+ // Only rebuild if count changed (avoids resetting animations)
   if (el.children.length !== total) {
     el.innerHTML = '';
     for (let i = 0; i < total; i++) {
@@ -2221,18 +2109,57 @@ function renderLives() {
   }
 }
 
-// ═══════════════════════════════════════════════════════
-//  UPDATE
-// ═══════════════════════════════════════════════════════
+function releaseControls() {
+  keys.left = false;
+  keys.right = false;
+  ctrlLeft.classList.remove('pressed');
+  ctrlRight.classList.remove('pressed');
+}
+
+function renderPauseButton() {
+  if (!pauseBtn) return;
+  pauseBtn.setAttribute('aria-label', state === 'paused' ? '이어하기' : '일시정지');
+  pauseBtn.innerHTML = state === 'paused'
+    ? '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10-6.5z"></path></svg>'
+    : '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="7" y="5" width="4" height="14" rx="1"></rect><rect x="13" y="5" width="4" height="14" rx="1"></rect></svg>';
+}
+
+function pauseGame() {
+  if (state !== 'play') return;
+  pausedAt = performance.now();
+  state = 'paused';
+  cancelAnimationFrame(frameId);
+  releaseControls();
+  draw();
+  hideAllOverlays();
+  renderPauseButton();
+  pauseOverlay.classList.remove('hidden');
+}
+
+function resumeGame() {
+  if (state !== 'paused') return;
+  const pauseDuration = performance.now() - pausedAt;
+  pausedAt = 0;
+  objects.forEach(obj => {
+    if (obj.spawnTime) obj.spawnTime += pauseDuration;
+  });
+  lastTime = performance.now();
+  state = 'play';
+  hideAllOverlays();
+  renderPauseButton();
+  frameId = requestAnimationFrame(loop);
+}
+
+// UPDATE
 function update(dt) {
   const w = cw();
 
-  // Player movement
+ // Player movement
   if (keys.left)  player.vx -= VX_ACCEL;
   if (keys.right) player.vx += VX_ACCEL;
   player.vx *= VX_FRICTION;
   player.x  += player.vx;
-  // Shake effect on bad hit
+ // Shake effect on bad hit
   if (shakeFrames > 0) {
     shakeFrames--;
     player.x += Math.sin(shakeFrames * 2.8) * 4;
@@ -2241,10 +2168,10 @@ function update(dt) {
   if (player.x <= 0 || player.x >= w - PLAYER_W) player.vx = 0;
   if (player.eyeBlink > 0) player.eyeBlink -= dt;
 
-  // Canvas flash countdown
+ // Canvas flash countdown
   if (flashFrames > 0) flashFrames--;
 
-  // Combo bar drain animation
+ // Combo bar drain animation
   if (comboBarDrain > 0) {
     comboBarDrain--;
     const t = 1 - (comboBarDrain / 10);
@@ -2257,7 +2184,7 @@ function update(dt) {
     }
   }
 
-  // Combo bar pulse animation
+ // Combo bar pulse animation
   if (comboBarPulse > 0) {
     comboBarPulse--;
     const pt = comboBarPulse / 12;
@@ -2269,13 +2196,13 @@ function update(dt) {
   frameCount++;
   tick += 0.03;
 
-  // Deferred death
+ // Deferred death
   if (deathFrame > 0) {
     deathFrame--;
     if (deathFrame === 0) { deathFrame = -1; endGame(); return; }
   }
 
-  // Condition bar flash pulse (brief opacity blink when rule-change timer fires)
+ // Condition bar flash pulse (brief opacity blink when rule-change timer fires)
   if (ruleFlashFrames > 0) {
     ruleFlashFrames--;
     const total = 60;
@@ -2287,69 +2214,61 @@ function update(dt) {
     }
   }
 
-  // Periodic condition bar flash pulse
+ // Periodic condition bar flash pulse
   if (frameCount >= ruleChangeFrame) {
     ruleChangeFrame = frameCount + randInt(200, 400);
     ruleFlash.textContent = '';
     ruleFlashFrames = 60;
-    // Reset collect_after_rule_change tracker
+  // Reset collect_after_rule_change tracker
     missionCollectsSinceCondChange = 0;
     if (activeMission && activeMission.type === 'collect_after_rule_change') {
       activeMission.progress = 0;
     }
   }
 
-  // ── Fever countdown ──
+ // Fever countdown
   if (feverActive) {
     feverFrames--;
-    // Pulse rule-bar between accent and gold
+  // Pulse rule-bar between accent and gold
     const ruleBar = document.getElementById('rule-bar');
     if (ruleBar && feverFrames % 30 < 15) {
       ruleBar.style.background = '#5c4200';
     } else if (ruleBar) {
       const theme = THEMES[currentLevel().theme] || THEMES.space;
-      // use the current tint with a gold overlay effect
+   // use the current tint with a gold overlay effect
       ruleBar.style.background = '';
     }
-    // Update fever countdown bar
+  // Update fever countdown bar
     feverFill.style.width = ((feverFrames / FEVER_DURATION) * 100).toFixed(1) + '%';
     if (feverFrames <= 0) endFever();
   }
 
-  // ── Slow countdown ──
+ // Slow countdown
   if (slowActive) {
     slowFrames--;
     if (slowFrames <= 0) {
       slowActive = false;
       slowFrames = 0;
+      slowFadeFrames = SLOW_FADE_DURATION;
       renderSlowUI();
     }
   }
-
-  // count_limit: reset every 10 seconds
-  if (activeCond.type === 'count_limit' && performance.now() >= countLimitResetAt) {
-    countLimitCounts = { red: 0, blue: 0, yellow: 0 };
-    countLimitResetAt = performance.now() + 10000;
-    renderConditionBar();
+  if (slowFadeFrames > 0) {
+    slowFadeFrames--;
   }
 
-  // ── Mission spawn / tick ──
+ // Mission spawn / tick
   if (!activeMission && frameCount >= missionSpawnFrame) {
     activeMission = pickMissionForLevel(currentLevel().lv);
-    if (activeMission) {
-      // reset trackers
-      if (activeMission.type === 'collect_after_rule_change') {
-        missionCollectsSinceCondChange = 0;
-      }
-      if (activeMission.type === 'no_move') {
-        missionNoMoveLastX = null;
-      }
+    if (activeMission && activeMission.type === 'collect_after_rule_change') {
+   // reset trackers
+      missionCollectsSinceCondChange = 0;
     }
     renderMissionPill();
   }
 
   if (activeMission) {
-    // survive_seconds: count down frames
+  // survive_seconds: count down frames
     if (activeMission.type === 'survive_seconds') {
       activeMission.framesLeft--;
       if (activeMission.framesLeft <= 0) {
@@ -2359,26 +2278,27 @@ function update(dt) {
         renderMissionPill();
       }
     }
-    // combo_reach: passively watch combo
+  // combo_reach: passively watch combo
     if (activeMission.type === 'combo_reach') {
       activeMission.progress = combo;
       if (combo >= activeMission.target) completeMission();
       else renderMissionPill();
     }
-    // time-limit expiry for other types
+  // time-limit expiry for other types
     if (activeMission && activeMission.timeLimit !== null && activeMission.type !== 'survive_seconds') {
       const elapsed = frameCount - activeMission.startFrame;
       if (elapsed > activeMission.timeLimit) failMission();
     }
   }
 
-  // Check level clear (score-driven)
+ // Check level clear (score-driven)
   if (score >= currentLevel().targetScore) { levelClear(); return; }
 
-  // Spawn objects
+ // Spawn objects
   if (frameCount >= objSpawnFrame) {
-    spawnObject();
-    objSpawnFrame = frameCount + objSpawnInterval();
+    const spawnedPattern = spawnObject();
+    const clusterDelay = currentLevel().lv === 18 ? CLUSTER_FOLLOWUP_DELAY_LV18 : CLUSTER_FOLLOWUP_DELAY;
+    objSpawnFrame = frameCount + objSpawnInterval() + (spawnedPattern === 'cluster' ? clusterDelay : 0);
   }
 
   const fallSpeed = objFallSpeed();
@@ -2390,7 +2310,7 @@ function update(dt) {
     const obj = objects[i];
     updateObject(obj, fallSpeed);
 
-    if (obj.y > CANVAS_H + 30) {
+    if (obj.y > ch() + 30) {
       handleMiss(obj);
       objects.splice(i, 1);
       continue;
@@ -2405,7 +2325,7 @@ function update(dt) {
     }
   }
 
-  // Feedback fade
+ // Feedback fade
   for (let i = feedbacks.length - 1; i >= 0; i--) {
     const fb = feedbacks[i];
     fb.framesLeft--;
@@ -2413,7 +2333,7 @@ function update(dt) {
     if (fb.framesLeft <= 0) feedbacks.splice(i, 1);
   }
 
-  // Miss animation fade
+ // Miss animation fade
   for (let i = misses.length - 1; i >= 0; i--) {
     const m = misses[i];
     m.framesLeft--;
@@ -2422,7 +2342,7 @@ function update(dt) {
     if (m.framesLeft <= 0) misses.splice(i, 1);
   }
 
-  // Particles
+ // Particles
   for (let i = particles.length - 1; i >= 0; i--) {
     const p = particles[i];
     p.x += p.vx; p.y += p.vy;
@@ -2432,9 +2352,7 @@ function update(dt) {
   }
 }
 
-// ═══════════════════════════════════════════════════════
-//  DRAW
-// ═══════════════════════════════════════════════════════
+// DRAW
 function roundRect(ctx, x, y, w, h, r) {
   ctx.beginPath();
   ctx.moveTo(x + r, y); ctx.lineTo(x + w - r, y);
@@ -2448,9 +2366,7 @@ function roundRect(ctx, x, y, w, h, r) {
   ctx.closePath();
 }
 
-// ═══════════════════════════════════════════════════════
-//  THEMED SHAPE RENDERERS
-// ═══════════════════════════════════════════════════════
+// THEMED SHAPE RENDERERS
 
 function drawStar(x, y, r, fill) {
   const inner = r * 0.42;
@@ -2469,12 +2385,12 @@ function drawStar(x, y, r, fill) {
 }
 
 function drawPlanet(x, y, r, fill) {
-  // Body
+ // Body
   ctx.beginPath();
   ctx.arc(x, y, r, 0, Math.PI * 2);
   ctx.fillStyle = fill;
   ctx.fill();
-  // Ring
+ // Ring
   ctx.save();
   ctx.globalAlpha = 0.3;
   ctx.strokeStyle = '#fff';
@@ -2483,7 +2399,7 @@ function drawPlanet(x, y, r, fill) {
   ctx.ellipse(x, y, r + 5, r * 0.3, 0.4, 0, Math.PI * 2);
   ctx.stroke();
   ctx.restore();
-  // Highlight
+ // Highlight
   ctx.save();
   ctx.globalAlpha = 0.15;
   ctx.fillStyle   = '#fff';
@@ -2494,7 +2410,7 @@ function drawPlanet(x, y, r, fill) {
 }
 
 function drawRing(x, y, r, fill) {
-  // Outer dashed circle
+ // Outer dashed circle
   ctx.save();
   ctx.globalAlpha = 0.4;
   ctx.strokeStyle = fill;
@@ -2504,7 +2420,7 @@ function drawRing(x, y, r, fill) {
   ctx.arc(x, y, r, 0, Math.PI * 2);
   ctx.stroke();
   ctx.restore();
-  // Inner solid ring
+ // Inner solid ring
   ctx.strokeStyle = fill;
   ctx.lineWidth   = 3.5;
   ctx.setLineDash([]);
@@ -2523,7 +2439,7 @@ function drawDiamond(x, y, r, fill) {
   ctx.closePath();
   ctx.fillStyle = fill;
   ctx.fill();
-  // Highlight
+ // Highlight
   ctx.save();
   ctx.globalAlpha = 0.2;
   ctx.fillStyle   = '#fff';
@@ -2540,18 +2456,18 @@ function drawMushroom(x, y, r, fill) {
   const capR  = r * 0.85;
   const stemW = r * 0.6;
   const stemH = r * 0.7;
-  // Cap (upper semicircle)
+ // Cap (upper semicircle)
   ctx.beginPath();
   ctx.arc(x, y, capR, Math.PI, 0);
   ctx.closePath();
   ctx.fillStyle = fill;
   ctx.fill();
-  // White spots on cap
+ // White spots on cap
   ctx.fillStyle = 'rgba(255,255,255,0.6)';
   [[x - capR * 0.35, y - capR * 0.5, 3], [x + capR * 0.35, y - capR * 0.4, 2.5]].forEach(([sx, sy, sr]) => {
     ctx.beginPath(); ctx.arc(sx, sy, sr, 0, Math.PI * 2); ctx.fill();
   });
-  // Stem
+ // Stem
   const stemX = x - stemW / 2;
   const stemY = y;
   ctx.fillStyle = '#D3D1C7';
@@ -2567,7 +2483,7 @@ function drawDrop(x, y, r, fill) {
   ctx.closePath();
   ctx.fillStyle = fill;
   ctx.fill();
-  // Highlight
+ // Highlight
   ctx.save();
   ctx.globalAlpha   = 0.3;
   ctx.fillStyle     = '#fff';
@@ -2582,7 +2498,7 @@ function drawFruit(x, y, r, fill) {
   ctx.arc(x, y, r, 0, Math.PI * 2);
   ctx.fillStyle = fill;
   ctx.fill();
-  // Stem
+ // Stem
   ctx.strokeStyle = '#2d5a0e';
   ctx.lineWidth   = 1.5;
   ctx.lineCap     = 'round';
@@ -2590,7 +2506,7 @@ function drawFruit(x, y, r, fill) {
   ctx.moveTo(x, y - r);
   ctx.lineTo(x, y - r - 7);
   ctx.stroke();
-  // Highlight
+ // Highlight
   ctx.save();
   ctx.globalAlpha = 0.25;
   ctx.fillStyle   = '#fff';
@@ -2600,7 +2516,7 @@ function drawFruit(x, y, r, fill) {
   ctx.restore();
 }
 
-// Dispatch table: shape name → draw function
+// Dispatch table: shape name -> draw function
 const SHAPE_RENDERERS = {
   star:     drawStar,
   planet:   drawPlanet,
@@ -2609,7 +2525,7 @@ const SHAPE_RENDERERS = {
   mushroom: drawMushroom,
   drop:     drawDrop,
   fruit:    drawFruit,
-  // legacy generic shapes (still used for rule-bar icon and any future fallback)
+ // legacy generic shapes (still used for rule-bar icon and any future fallback)
   circle:   (x, y, r, fill) => { ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fillStyle = fill; ctx.fill(); },
   triangle: (x, y, r, fill) => {
     const h = r * Math.sqrt(3);
@@ -2632,9 +2548,7 @@ const SHAPE_RENDERERS = {
   },
 };
 
-// ═══════════════════════════════════════════════════════
-//  THEME UI APPLICATION
-// ═══════════════════════════════════════════════════════
+// THEME UI APPLICATION
 
 // Cached star positions for space background (generated once per session)
 let _spaceStars = null;
@@ -2662,19 +2576,17 @@ function applyThemeUI(themeName) {
 function resetThemeUI() {
   document.getElementById('rule-flash').style.background = '#0F6E56';
   document.getElementById('combo-track').style.background = '';
-  // Reset condition bar tint
+ // Reset condition bar tint
   const ruleBar = document.getElementById('rule-bar');
   if (ruleBar) ruleBar.className = '';
 }
 
-// ═══════════════════════════════════════════════════════
-//  BACKGROUND — three animated theme implementations
-// ═══════════════════════════════════════════════════════
+// BACKGROUND - three animated theme implementations
 
 function drawBgSpace(W, H) {
   ctx.fillStyle = '#0a0a1a';
   ctx.fillRect(0, 0, W, H);
-  // Grid
+ // Grid
   ctx.strokeStyle = 'rgba(100,100,200,0.06)';
   ctx.lineWidth   = 0.5;
   for (let x = 0; x < W; x += 32) {
@@ -2683,7 +2595,7 @@ function drawBgSpace(W, H) {
   for (let y = 0; y < H; y += 32) {
     ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
   }
-  // Twinkling stars
+ // Twinkling stars
   const stars = getSpaceStars(W, H);
   stars.forEach(s => {
     const alpha = 0.4 + Math.sin(tick + s.phase) * 0.3;
@@ -2699,7 +2611,7 @@ function drawBgSpace(W, H) {
 function drawBgNeon(W, H) {
   ctx.fillStyle = '#0f0f0f';
   ctx.fillRect(0, 0, W, H);
-  // Coloured vertical column sets
+ // Coloured vertical column sets
   const cols = [
     { color: 'rgba(55,138,221,0.07)',  offset: 0  },
     { color: 'rgba(226,75,74,0.07)',   offset: 20 },
@@ -2712,7 +2624,7 @@ function drawBgNeon(W, H) {
       ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
     }
   });
-  // Horizontal scan lines
+ // Horizontal scan lines
   ctx.strokeStyle = 'rgba(175,169,236,0.05)';
   for (let y = 0; y < H; y += 24) {
     ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
@@ -2722,22 +2634,22 @@ function drawBgNeon(W, H) {
 function drawBgForest(W, H) {
   ctx.fillStyle = '#1a2710';
   ctx.fillRect(0, 0, W, H);
-  // Tree silhouettes along bottom
+ // Tree silhouettes along bottom
   const treeCount = 8;
   for (let i = 0; i < treeCount; i++) {
     const tx  = (W / treeCount) * i + W / treeCount / 2;
-    const th1 = 40 + (i * 37 % 31);  // 40–70px variation via deterministic pseudo-random
+    const th1 = 40 + (i * 37 % 31);  // 40??0px variation via deterministic pseudo-random
     const th2 = th1 * 0.65;
     const tw  = th1 * 0.55;
     ctx.fillStyle = 'rgba(63,109,17,0.18)';
-    // Back layer (slightly wider, taller)
+  // Back layer (slightly wider, taller)
     ctx.beginPath();
     ctx.moveTo(tx - tw * 0.7, H);
     ctx.lineTo(tx,            H - th1 * 1.1);
     ctx.lineTo(tx + tw * 0.7, H);
     ctx.closePath();
     ctx.fill();
-    // Front layer
+  // Front layer
     ctx.beginPath();
     ctx.moveTo(tx - tw * 0.5, H);
     ctx.lineTo(tx,            H - th2);
@@ -2745,7 +2657,7 @@ function drawBgForest(W, H) {
     ctx.closePath();
     ctx.fill();
   }
-  // Dot grid
+ // Dot grid
   ctx.fillStyle = 'rgba(97,196,34,0.04)';
   for (let x = 0; x < W; x += 28) {
     for (let y = 0; y < H; y += 28) {
@@ -2756,15 +2668,15 @@ function drawBgForest(W, H) {
 
 function drawBackground() {
   const W     = cw();
-  const theme = (state === 'play' || state === 'dead' || state === 'clear') ? currentLevel().theme : 'space';
-  if (theme === 'neon')   { drawBgNeon(W, CANVAS_H);   return; }
-  if (theme === 'forest') { drawBgForest(W, CANVAS_H); return; }
-  drawBgSpace(W, CANVAS_H);
+  const theme = (state === 'play' || state === 'paused' || state === 'dead' || state === 'clear') ? currentLevel().theme : 'space';
+  if (theme === 'neon')   { drawBgNeon(W, ch());   return; }
+  if (theme === 'forest') { drawBgForest(W, ch()); return; }
+  drawBgSpace(W, ch());
 }
 
 function drawPlayer() {
   const px = player.x, py = player.y;
-  const theme = (state === 'play') ? (THEMES[currentLevel().theme] || THEMES.space) : THEMES.space;
+  const theme = (state === 'play' || state === 'paused') ? (THEMES[currentLevel().theme] || THEMES.space) : THEMES.space;
 
   ctx.fillStyle = theme.playerFill;
   roundRect(ctx, px, py, PLAYER_W, PLAYER_H, PLAYER_RADIUS);
@@ -2787,18 +2699,18 @@ function drawPlayer() {
 }
 
 function drawObject(obj) {
-  const { x, y, r, color, shape, moving } = obj;
+  const { x, y, r, color, shape, moving, splitCount } = obj;
   const renderer = SHAPE_RENDERERS[shape] || SHAPE_RENDERERS.circle;
 
-  // Soft glow
+ // Soft glow
   ctx.globalAlpha = 0.18;
   renderer(x, y, r + 7, color.fill);
   ctx.globalAlpha = 1;
 
-  // Main shape
+ // Main shape
   renderer(x, y, r, color.fill);
 
-  // Moving indicator: dashed ring
+ // Moving indicator: dashed ring
   if (moving) {
     ctx.save();
     ctx.globalAlpha = 0.35;
@@ -2812,7 +2724,24 @@ function drawObject(obj) {
     ctx.restore();
   }
 
-  // Fever: gold outer ring
+ // Split children: high-contrast ring + tiny marker so they stand out from the parent.
+  if (splitCount > 0) {
+    ctx.save();
+    ctx.globalAlpha = 0.95;
+    ctx.strokeStyle = '#FFFFFF';
+    ctx.lineWidth   = 2.5;
+    ctx.beginPath();
+    ctx.arc(x, y, r + 5, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = '700 10px system-ui, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('!', x, y - (r + 10));
+    ctx.restore();
+  }
+
+ // Fever: gold outer ring
   if (feverActive) {
     ctx.save();
     ctx.globalAlpha  = 0.75 + 0.25 * Math.sin(tick * 8);
@@ -2824,26 +2753,6 @@ function drawObject(obj) {
     ctx.restore();
   }
 
-  // Time-window shrinking ring
-  if (activeCond.type === 'time_window') {
-    const windowMs   = activeCond.windowMs || 1500;
-    // Slow extends the effective window proportionally
-    const effectiveMs = slowActive ? windowMs / SLOW_SPEED_MUL : windowMs;
-    const elapsed    = performance.now() - obj.spawnTime;
-    const t          = Math.min(elapsed / effectiveMs, 1); // 0 → 1 over windowMs
-    const ringR    = r + 12 - t * 12;                 // r+12 → r
-    const alpha    = Math.max(0, 1 - t);
-    if (alpha > 0 && ringR > r) {
-      ctx.save();
-      ctx.globalAlpha  = alpha * 0.8;
-      ctx.strokeStyle  = '#FF3B30';
-      ctx.lineWidth    = 2;
-      ctx.beginPath();
-      ctx.arc(x, y, ringR, -Math.PI / 2, -Math.PI / 2 + (1 - t) * Math.PI * 2);
-      ctx.stroke();
-      ctx.restore();
-    }
-  }
 }
 
 function drawParticles() {
@@ -2861,14 +2770,13 @@ function drawFeedbacks() {
   const TOTAL = 22;
   feedbacks.forEach(fb => {
     const elapsed = TOTAL - fb.framesLeft; // frames since spawn
-    // Font size: 18 → 24 over first 8 frames, then 24 → 14 over remaining
     let fontSize;
     if (elapsed <= 8) {
       fontSize = 18 + (24 - 18) * (elapsed / 8);
     } else {
       fontSize = 24 + (14 - 24) * ((elapsed - 8) / (TOTAL - 8));
     }
-    // Float up 30px over 22 frames
+  // Float up 30px over 22 frames
     const drift = (elapsed / TOTAL) * 30;
     const alpha = Math.max(0, fb.framesLeft / TOTAL);
 
@@ -2878,7 +2786,7 @@ function drawFeedbacks() {
     ctx.font         = `bold ${Math.round(fontSize)}px -apple-system, sans-serif`;
     ctx.textAlign    = 'center';
     ctx.textBaseline = 'bottom';
-    ctx.fillText(fb.text, fb.ox ?? (cw() / 2), (fb.oy ?? (CANVAS_H / 2)) - drift);
+    ctx.fillText(fb.text, fb.ox ?? (cw() / 2), (fb.oy ?? (ch() / 2)) - drift);
     ctx.restore();
   });
 }
@@ -2889,7 +2797,7 @@ function drawFlash() {
   ctx.save();
   ctx.globalAlpha = 0.18 * (flashFrames / 8);
   ctx.fillStyle   = 'rgb(216,90,48)';
-  ctx.fillRect(0, 0, W, CANVAS_H);
+  ctx.fillRect(0, 0, W, ch());
   ctx.restore();
 }
 
@@ -2901,13 +2809,13 @@ function drawMisses() {
     ctx.font        = `bold 18px -apple-system, sans-serif`;
     ctx.textAlign   = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('↓ MISS', m.x, m.y);
+    ctx.fillText('MISS', m.x, m.y);
     ctx.restore();
   });
 }
 
 function draw() {
-  ctx.clearRect(0, 0, cw(), CANVAS_H);
+  ctx.clearRect(0, 0, cw(), ch());
   if (slowActive) ctx.filter = 'saturate(0.4)';
   drawBackground();
   objects.forEach(drawObject);
@@ -2919,9 +2827,7 @@ function draw() {
   drawMisses();
 }
 
-// ═══════════════════════════════════════════════════════
-//  GAME LOOP
-// ═══════════════════════════════════════════════════════
+// GAME LOOP
 function loop(ts) {
   if (state !== 'play') return;
   const dt = Math.min(ts - lastTime, 50);
@@ -2931,20 +2837,19 @@ function loop(ts) {
   frameId = requestAnimationFrame(loop);
 }
 
-// ═══════════════════════════════════════════════════════
-//  STATE TRANSITIONS
-// ═══════════════════════════════════════════════════════
+// STATE TRANSITIONS
 
 // Show the 1.5-second level intro, then start play
 function showLevelIntro(lvIdx, afterCb) {
   state = 'intro';
   cancelAnimationFrame(frameId);
   clearTimeout(introTimer);
+  renderPauseButton();
 
   currentLevelIdx = lvIdx;
   const lv = currentLevel();
 
-  // Populate intro overlay
+ // Populate intro overlay
   introLv.textContent     = `Level ${lv.lv}`;
   introTitle.textContent  = lv.title;
   introTheme.textContent  = `테마: ${lv.theme}`;
@@ -2953,17 +2858,12 @@ function showLevelIntro(lvIdx, afterCb) {
   const COND_LABEL = {
     free_collect:   '자유 수집',
     color_sequence: '순서 수집',
-    streak_collect: '연속 수집',
-    alternating:    '교차 수집',
-    count_limit:    '제한 수집',
-    time_window:    '시간 수집',
   };
   introMechs.innerHTML = `<span class="mech-chip">${COND_LABEL[lv.condition] || lv.condition}</span>`;
 
   hideAllOverlays();
   introOverlay.classList.remove('hidden');
 
-  // Countdown: 3 → 2 → 1 → GO
   const ticks = ['3', '2', '1', 'GO!'];
   let t = 0;
   function tick() {
@@ -2980,32 +2880,37 @@ function showLevelIntro(lvIdx, afterCb) {
 
 function startGame() {
   initGame();
+  pausedAt = 0;
   state = 'play';
   hideAllOverlays();
+  renderPauseButton();
   lastTime = performance.now();
   frameId = requestAnimationFrame(loop);
 }
 
 function endGame() {
   state = 'dead';
+  renderPauseButton();
+  score = toWholeScore(score);
+  best = toWholeScore(best);
   if (score > best) best = score;
   cancelAnimationFrame(frameId);
   draw();
 
-  // Persist best score for this level
+ // Persist best score for this level
   const lv  = currentLevel();
   const idx = lv.lv - 1;
   if (score > (save.bestScores[idx] || 0)) {
     save.bestScores[idx] = score;
-    save.totalScore = (save.totalScore || 0) + score;
+    save.totalScore = toWholeScore((save.totalScore || 0) + score);
     writeSave();
   }
 
   const pct        = Math.min(score / lv.targetScore, 1);
   const livesLost  = (lv.lives || 3) - lives;
-  retryScore.textContent = `Lv ${lv.lv} ${lv.title} — 점수 ${score} / ${lv.targetScore}`;
+  retryScore.textContent = `Lv ${lv.lv} ${lv.title} · 점수 ${score} / ${lv.targetScore}`;
   retryProg.style.width  = (pct * 100) + '%';
-  retryPct.textContent   = `${Math.round(pct * 100)}% 달성 · 목숨 ${livesLost}개 잃음`;
+  retryPct.textContent   = `${Math.round(pct * 100)}% 달성 · 잃은 목숨 ${livesLost}개`;
 
   hideAllOverlays();
   retryOverlay.classList.remove('hidden');
@@ -3014,29 +2919,28 @@ function endGame() {
 
 function levelClear() {
   state = 'clear';
+  renderPauseButton();
   cancelAnimationFrame(frameId);
   draw();
   vibrate([30, 20, 30, 20, 50]);
+  score = toWholeScore(score);
+  best = toWholeScore(best);
 
   const lv    = currentLevel();
   const idx   = lv.lv - 1;
-  const stars = calcStars(score, lv.targetScore);
 
-  // Save progress
+ // Save progress
   if (lv.lv >= save.unlockedUpTo && lv.lv < 20) {
     save.unlockedUpTo = lv.lv + 1;
-  }
-  if (stars > (save.stars[idx] || 0)) {
-    save.stars[idx] = stars;
   }
   if (score > (save.bestScores[idx] || 0)) {
     save.bestScores[idx] = score;
   }
   save.totalScore = (save.totalScore || 0) + score;
+  save.totalScore = toWholeScore(save.totalScore);
   writeSave();
 
-  clearLv.textContent    = `Lv ${lv.lv} — ${lv.title}`;
-  clearStars.textContent = '★'.repeat(stars) + '☆'.repeat(3 - stars);
+  clearLv.textContent    = `Lv ${lv.lv} · ${lv.title}`;
   clearScore.textContent = `점수 ${score}`;
 
   clearNextBtn.style.display = lv.lv >= 20 ? 'none' : '';
@@ -3051,16 +2955,16 @@ function hideAllOverlays() {
   introOverlay.classList.add('hidden');
   clearOverlay.classList.add('hidden');
   retryOverlay.classList.add('hidden');
+  pauseOverlay.classList.add('hidden');
   renderMissionPill(); // hides pill when state !== 'play'
 }
 
-// ═══════════════════════════════════════════════════════
-//  LEVEL SELECT SCREEN
-// ═══════════════════════════════════════════════════════
+// LEVEL SELECT SCREEN
 function showLevelSelect() {
   state = 'levelselect';
   cancelAnimationFrame(frameId);
   clearTimeout(introTimer);
+  renderPauseButton();
 
   levelSelectEl.classList.add('active');
   gameUiEl.style.display = 'none';
@@ -3079,11 +2983,7 @@ function renderLevelGrid(phase) {
   if (phase !== undefined) activePhaseTab = phase;
   levelGridCont.innerHTML = '';
 
-  // Update total stars display
-  const totalStars = save.stars.reduce((s, v) => s + v, 0);
-  lsTotalStars.textContent = `⭐ ${totalStars} / 60`;
-
-  // Update phase tab active state
+ // Update phase tab active state
   document.querySelectorAll('.phase-tab').forEach(btn => {
     btn.classList.toggle('active', parseInt(btn.dataset.phase) === activePhaseTab);
   });
@@ -3094,22 +2994,21 @@ function renderLevelGrid(phase) {
 
   lvs.forEach(lv => {
     const unlocked  = lv.lv <= save.unlockedUpTo;
-    const lvStars   = save.stars[lv.lv - 1] || 0;
-    const completed = lvStars > 0;
+    const bestScore = save.bestScores[lv.lv - 1] || 0;
+    const completed = bestScore > 0;
 
     const card = document.createElement('div');
     card.className = 'lv-card ' + (unlocked ? (completed ? 'completed' : 'available') : 'locked');
 
     const dotClass = `dot-${lv.theme}`;
-    const starsHtml = [1, 2, 3].map(i =>
-      `<span style="color:${lvStars >= i ? '#F5B800' : '#d9d8d4'}">${lvStars >= i ? '★' : '☆'}</span>`
-    ).join('');
 
     card.innerHTML = `
       <div class="lv-num" style="font-size:13px;font-weight:500">${lv.lv}</div>
       <div class="lv-dot ${dotClass}" style="width:6px;height:6px"></div>
       ${unlocked
-        ? `<div class="lv-stars-row">${starsHtml}</div>`
+        ? (completed
+            ? `<div class="lv-stars-row" style="font-size:10px;color:#0F6E56;font-weight:700">CLEAR</div>`
+            : `<div class="lv-stars-row" style="font-size:10px;color:#bbb">PLAY</div>`)
         : `<div class="lv-lock" style="font-size:12px;color:#ccc">🔒</div>`}
     `;
 
@@ -3131,16 +3030,15 @@ document.querySelectorAll('.phase-tab').forEach(btn => {
   btn.addEventListener('click', () => renderLevelGrid(parseInt(btn.dataset.phase)));
 });
 
-// ═══════════════════════════════════════════════════════
-//  OVERLAY / BUTTON WIRING
-// ═══════════════════════════════════════════════════════
+// OVERLAY / BUTTON WIRING
 
-// Start screen button → level 1 intro
+// Start screen button -> level 1 intro
 overlayBtn.addEventListener('click', () => {
   showLevelIntro(0, startGame);
 });
+overlaySelectBtn.addEventListener('click', showLevelSelect);
 
-// Level clear → next level
+// Level clear -> next level
 clearNextBtn.addEventListener('click', () => {
   const next = Math.min(currentLevelIdx + 1, LEVELS.length - 1);
   showLevelIntro(next, startGame);
@@ -3148,17 +3046,22 @@ clearNextBtn.addEventListener('click', () => {
 
 clearSelectBtn.addEventListener('click', showLevelSelect);
 
-// Retry → same level
+// Retry -> same level
 retryBtn.addEventListener('click', () => {
   showLevelIntro(currentLevelIdx, startGame);
 });
 
 retrySelBtn.addEventListener('click', showLevelSelect);
+pauseBtn.addEventListener('click', () => {
+  if (state === 'play') pauseGame();
+  else if (state === 'paused') resumeGame();
+});
+pauseResumeBtn.addEventListener('click', resumeGame);
 
 // Level select back button
 lsBackBtn.addEventListener('click', () => {
   hideLevelSelect();
-  // Return to start screen if game hasn't started yet, otherwise retry overlay
+ // Return to start screen if game hasn't started yet, otherwise retry overlay
   if (state === 'levelselect') {
     hideAllOverlays();
     resetThemeUI();
@@ -3168,9 +3071,7 @@ lsBackBtn.addEventListener('click', () => {
   }
 });
 
-// ═══════════════════════════════════════════════════════
-//  SLOW SKILL BUTTON
-// ═══════════════════════════════════════════════════════
+// SLOW SKILL BUTTON
 slowBtn.addEventListener('pointerdown', e => {
   e.preventDefault();
   activateSlow();
@@ -3189,37 +3090,8 @@ document.addEventListener('keydown', e => {
   if (e.key === 's' || e.key === 'S') activateSlow();
 });
 
-// ═══════════════════════════════════════════════════════
-//  TOUCH SWIPE ON CANVAS
-// ═══════════════════════════════════════════════════════
-let touchStartX = 0, touchStartY = 0;
-canvas.addEventListener('touchstart', e => {
-  touchStartX = e.touches[0].clientX;
-  touchStartY = e.touches[0].clientY;
-}, { passive: true });
-
-canvas.addEventListener('touchmove', e => {
-  const dx = e.touches[0].clientX - touchStartX;
-  const dy = e.touches[0].clientY - touchStartY;
-  // Ignore if vertical scroll intent dominates
-  if (Math.abs(dy) > Math.abs(dx)) return;
-  if (dx > 8)       { keys.right = true;  keys.left  = false; }
-  else if (dx < -8) { keys.left  = true;  keys.right = false; }
-  touchStartX = e.touches[0].clientX;
-  touchStartY = e.touches[0].clientY;
-}, { passive: true });
-
-canvas.addEventListener('touchend', () => {
-  keys.left = keys.right = false;
-}, { passive: true });
-
-canvas.addEventListener('touchcancel', () => {
-  keys.left = keys.right = false;
-}, { passive: true });
-
-// ═══════════════════════════════════════════════════════
-//  BUTTON CONTROLS
-// ═══════════════════════════════════════════════════════
+// TOUCH SWIPE ON CANVAS
+// BUTTON CONTROLS
 function pressBtn(btn, key, down) {
   keys[key] = down;
   btn.classList.toggle('pressed', down);
@@ -3233,24 +3105,26 @@ ctrlRight.addEventListener('pointerup',    () => pressBtn(ctrlRight, 'right', fa
 ctrlRight.addEventListener('pointerleave', () => pressBtn(ctrlRight, 'right', false));
 ctrlRight.addEventListener('touchcancel',  () => pressBtn(ctrlRight, 'right', false));
 
-// ═══════════════════════════════════════════════════════
-//  KEYBOARD
-// ═══════════════════════════════════════════════════════
+// KEYBOARD
 document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft'  || e.key === 'a') keys.left  = true;
   if (e.key === 'ArrowRight' || e.key === 'd') keys.right = true;
-  if ((e.key === ' ' || e.key === 'Enter') && state !== 'play') overlayBtn.click();
+  if ((e.key === 'p' || e.key === 'P' || e.key === 'Escape') && (state === 'play' || state === 'paused')) {
+    e.preventDefault();
+    if (state === 'play') pauseGame();
+    else resumeGame();
+  }
+  if ((e.key === ' ' || e.key === 'Enter') && state !== 'play' && state !== 'paused') overlayBtn.click();
 });
 document.addEventListener('keyup', e => {
   if (e.key === 'ArrowLeft'  || e.key === 'a') keys.left  = false;
   if (e.key === 'ArrowRight' || e.key === 'd') keys.right = false;
 });
 
-// ═══════════════════════════════════════════════════════
-//  SETTINGS PANEL
-// ═══════════════════════════════════════════════════════
+// SETTINGS PANEL
 function openSettings() {
-  // Sync toggle states from save
+  if (state === 'play') pauseGame();
+ // Sync toggle states from save
   sfxToggle.checked = save.settings.sfxEnabled;
   vibToggle.checked = save.settings.vibrationEnabled;
   settingsSheet.classList.add('open');
@@ -3274,11 +3148,11 @@ vibToggle.addEventListener('change', () => {
 });
 
 dataResetBtn.addEventListener('click', () => {
-  if (confirm('모든 진행 데이터를 초기화하시겠습니까?\n이 작업은 되돌릴 수 없습니다.')) {
+  if (confirm('모든 진행 데이터를 초기화할까요?\n이 작업은 되돌릴 수 없습니다.')) {
     try { localStorage.removeItem(SAVE_KEY); } catch (_) {}
     save = defaultSave();
     closeSettings();
-    // Return to start screen
+  // Return to start screen
     state = 'idle';
     cancelAnimationFrame(frameId);
     clearTimeout(introTimer);
@@ -3287,13 +3161,12 @@ dataResetBtn.addEventListener('click', () => {
     resetThemeUI();
     overlay.classList.remove('hidden');
     drawBackground();
+    renderPauseButton();
     updateUI();
   }
 });
 
-// ═══════════════════════════════════════════════════════
-//  BOOT
-// ═══════════════════════════════════════════════════════
+// BOOT
 // Sync toggle UI with loaded save before first render
 sfxToggle.checked = save.settings.sfxEnabled;
 vibToggle.checked = save.settings.vibrationEnabled;
@@ -3302,7 +3175,9 @@ activeCond = { type: LEVELS[0].condition, ...(LEVELS[0].conditionConfig || {}) }
 renderConditionBar();
 drawBackground();
 overlay.classList.remove('hidden');
+renderPauseButton();
 updateUI();
 </script>
 </body>
 </html>
+
