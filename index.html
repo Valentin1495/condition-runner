@@ -114,33 +114,42 @@
      HUD BAR (Top Condition Bar)
      ============================================ */
     #rule-bar {
+      --rule-bar-divider: 2px;
+      --rule-bar-base: var(--c-surface-hud);
       padding: calc(var(--safe-top) + 10px) var(--sp-lg) 10px;
       display: flex;
       align-items: center;
       gap: var(--sp-sm);
       position: relative;
       overflow: hidden;
-      background: var(--c-surface-hud);
+      background: var(--rule-bar-base);
       transition: background .35s var(--ease-out);
-      box-shadow: 0 2px 0 rgba(0, 0, 0, .15);
     }
-
+    #rule-bar::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: var(--rule-bar-divider);
+      background: rgba(0, 0, 0, .15);
+      pointer-events: none;
+    }
     #rule-bar.tint-free {
-      background: #1C1F28;
+      --rule-bar-base: #1C1F28;
     }
 
     #rule-bar.tint-sequence {
-      background: #1E1830;
+      --rule-bar-base: #1E1830;
     }
 
     #rule-bar.tint-streak {
-      background: #132030;
+      --rule-bar-base: #132030;
     }
 
     #rule-bar.tint-time {
-      background: #281818;
+      --rule-bar-base: #281818;
     }
-
     /* HUD chips — shared pill style */
     .hud-chip,
     #cond-combo-wrap {
@@ -168,9 +177,28 @@
     #cond-combo-val {
       font-size: 16px;
       font-weight: 900;
-      color: rgba(255, 255, 255, .95);
+      color: #FFFFFF;
       line-height: 1.15;
       font-variant-numeric: tabular-nums;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, .18);
+    }
+    #cond-combo-val {
+      color: #F6C65B;
+    }
+    #cond-combo-wrap {
+      transition: background .18s var(--ease-out), border-color .18s var(--ease-out), box-shadow .18s var(--ease-out), transform .18s var(--ease-out);
+    }
+    #cond-combo-wrap.fever {
+      background: rgba(239, 159, 39, .22);
+      border-color: rgba(239, 159, 39, .34);
+      box-shadow: 0 0 0 1px rgba(239,159,39,.08), 0 6px 16px rgba(239,159,39,.12);
+      transform: translateY(-1px);
+    }
+    #cond-combo-wrap.fever > span:first-child {
+      color: rgba(255, 243, 214, .72);
+    }
+    #cond-combo-wrap.fever #cond-combo-val {
+      color: #FFF3D6;
     }
 
     .hud-chip-target .hud-chip-val {
@@ -350,9 +378,9 @@
       align-items: center;
       justify-content: center;
       padding: var(--sp-2xl);
-      background: rgba(232, 229, 223, 0.78);
-      backdrop-filter: blur(14px) saturate(1.1);
-      -webkit-backdrop-filter: blur(14px) saturate(1.1);
+      background: rgba(236, 233, 227, 0.62);
+      backdrop-filter: blur(10px) saturate(1.04);
+      -webkit-backdrop-filter: blur(10px) saturate(1.04);
       z-index: 10;
     }
 
@@ -371,7 +399,7 @@
       border-radius: 28px;
       padding: 18px 20px 16px;
       border: 1px solid rgba(255, 255, 255, .45);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, .14), 0 4px 18px rgba(0, 0, 0, .06);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, .12), 0 3px 12px rgba(0, 0, 0, .05);
       max-width: 314px;
       width: 100%;
     }
@@ -447,15 +475,16 @@
       width: 100%;
       max-width: 244px;
       padding: 13px var(--sp-2xl);
-      background: transparent;
-      color: var(--c-text-muted);
-      border: 1.5px solid rgba(0, 0, 0, .08);
+      background: rgba(255, 255, 255, .82);
+      color: #8A867F;
+      border: 1.5px solid rgba(0, 0, 0, .06);
       border-radius: var(--r-full);
       font-size: var(--t-sm);
       font-weight: 600;
       cursor: pointer;
       transition: background .12s, border-color .12s, transform .12s var(--ease-spring);
       -webkit-tap-highlight-color: transparent;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
     }
 
     .overlay-btn-ghost:active {
@@ -468,7 +497,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: var(--sp-xs);
+      gap: 12px;
       width: 100%;
       margin-top: var(--sp-sm);
     }
@@ -537,48 +566,14 @@
       display: flex;
       align-items: center;
       gap: var(--sp-xs);
-      font-size: var(--t-sm);
-      color: var(--c-text-muted);
-      font-weight: 500;
+      font-size: 13px;
+      color: #6E6A63;
+      font-weight: 700;
+      letter-spacing: -0.01em;
     }
 
     .intro-meta-sep {
-      opacity: .4;
-    }
-
-    /* ============================================
-     FEVER MODE INDICATORS
-     ============================================ */
-    #fever-bar {
-      height: 3px;
-      flex-shrink: 0;
-      background: transparent;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #fever-bar-fill {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      background: var(--c-warn);
-      transform-origin: left center;
-      transform: scaleX(0);
-      transition: none;
-    }
-
-    #fever-bar.active #fever-bar-fill {
-      animation: fever-bar-pulse .6s ease-in-out infinite alternate;
-    }
-
-    @keyframes fever-bar-pulse {
-      from {
-        opacity: .7;
-      }
-
-      to {
-        opacity: 1;
-      }
+      opacity: .55;
     }
 
     #fever-track,
@@ -621,16 +616,17 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      gap: var(--sp-xs);
-      width: 72px;
+      justify-content: flex-start;
+      gap: 10px;
+      width: 78px;
     }
 
     /* SLOW button */
     #slow-btn {
-      width: 72px;
-      flex: 1;
-      border-radius: 18px;
+      width: 78px;
+      height: 78px;
+      flex: none;
+      border-radius: 22px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -644,7 +640,7 @@
       -webkit-tap-highlight-color: transparent;
       user-select: none;
       pointer-events: auto;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .05);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .04);
     }
 
     #slow-count {
@@ -693,20 +689,20 @@
 
     /* PAUSE button */
     #pause-btn {
-      width: 72px;
-      height: 36px;
+      width: 60px;
+      height: 28px;
       flex-shrink: 0;
-      border: 1.5px solid rgba(0, 0, 0, .07);
-      background: rgba(255, 255, 255, .9);
+      border: 1px solid rgba(0, 0, 0, .06);
+      background: rgba(255, 255, 255, .78);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 12px;
+      border-radius: 999px;
       color: var(--c-text-muted);
       transition: background .1s, color .12s, transform .12s var(--ease-spring);
       padding: 0;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, .07);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .05);
       -webkit-tap-highlight-color: transparent;
     }
 
@@ -717,14 +713,14 @@
     }
 
     #pause-btn svg {
-      width: 14px;
-      height: 14px;
+      width: 12px;
+      height: 12px;
       pointer-events: none;
     }
 
     /* LEFT / RIGHT direction buttons */
     .ctrl-btn {
-      min-height: 120px;
+      min-height: 104px;
       background: linear-gradient(180deg, rgba(255, 255, 255, .98) 0%, rgba(251, 250, 247, .96) 100%);
       border: 1.5px solid rgba(0, 0, 0, .05);
       cursor: pointer;
@@ -737,8 +733,8 @@
       padding: 0;
       touch-action: none;
       color: var(--c-text-secondary);
-      border-radius: 18px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, .07), 0 1px 3px rgba(0, 0, 0, .04);
+      border-radius: 20px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, .07), 0 1px 3px rgba(0, 0, 0, .04);
     }
 
     .ctrl-btn svg {
@@ -778,7 +774,7 @@
       flex-direction: column;
       flex: 1;
       overflow-y: auto;
-      padding: var(--sp-lg) var(--sp-md) var(--sp-2xl);
+      padding: calc(var(--safe-top) + var(--sp-sm)) var(--sp-md) var(--sp-2xl);
       background: var(--c-surface);
     }
 
@@ -1272,11 +1268,6 @@
       </div>
       <span id="ui-combo" style="display:none">0</span>
 
-      <!-- Fever top border (above canvas) -->
-      <div id="fever-bar">
-        <div id="fever-bar-fill"></div>
-      </div>
-
       <!-- Hidden elements kept for JS compatibility -->
       <div id="combo-track" style="display:none">
         <div id="combo-fill"></div>
@@ -1334,7 +1325,7 @@
             <div class="prog-track">
               <div class="prog-fill" id="retry-prog"></div>
             </div>
-            <div class="overlay-sub" id="retry-pct" style="font-size:var(--t-xs);color:var(--c-text-muted)"></div>
+            <div class="overlay-sub" id="retry-pct" style="font-size:12px;color:#7A756D;font-weight:700"></div>
             <div class="overlay-btns">
               <button id="retry-btn" class="overlay-btn">다시 시도</button>
               <button id="retry-sel-btn" class="overlay-btn-ghost">레벨 선택</button>
@@ -1359,7 +1350,7 @@
           <div class="overlay-card">
             <div class="overlay-label">캐주얼 아케이드</div>
             <div id="overlay-title" class="overlay-title">Perfect Catch</div>
-            <div id="overlay-sub" class="overlay-sub">떨어지는 오브젝트를 최대한 모으세요.<br>놓치면 목숨이 줄고, 콤보를 쌓으면 조건이 바뀝니다.</div>
+            <div id="overlay-sub" class="overlay-sub">떨어지는 오브젝트를 최대한 모으세요.<br>놓치면 목숨이 줄고, 콤보를 쌓으면 점수가 폭등합니다.</div>
             <div id="overlay-scores"></div>
             <div class="overlay-btns">
               <button id="overlay-btn" class="overlay-btn">시작하기</button>
@@ -1545,26 +1536,26 @@
 
     // 20 Levels unified config
     const LEVELS = [
-      { lv: 1, title: '첫 수집', theme: 'space', phase: 0, targetScore: 120, speedBase: 2.0, lives: 3, patterns: ['straight'], patternWeights: [1], condition: 'free_collect', conditionConfig: {}, spawnInterval: 60 },
-      { lv: 2, title: '감 익히기', theme: 'space', phase: 0, targetScore: 145, speedBase: 2.2, lives: 3, patterns: ['straight'], patternWeights: [1], condition: 'free_collect', conditionConfig: {}, spawnInterval: 56 },
-      { lv: 3, title: '흔들림', theme: 'space', phase: 0, targetScore: 170, speedBase: 2.2, lives: 3, patterns: ['straight', 'wave'], patternWeights: [0.6, 0.4], condition: 'free_collect', conditionConfig: {}, spawnInterval: 54 },
-      { lv: 4, title: '파도', theme: 'space', phase: 0, targetScore: 200, speedBase: 2.4, lives: 3, patterns: ['straight', 'wave'], patternWeights: [0.4, 0.6], condition: 'free_collect', conditionConfig: {}, spawnInterval: 52 },
-      { lv: 5, title: '속도 시작', theme: 'neon', phase: 1, targetScore: 225, speedBase: 2.4, lives: 3, patterns: ['straight', 'accelerate'], patternWeights: [0.5, 0.5], condition: 'free_collect', conditionConfig: {}, spawnInterval: 50 },
-      { lv: 6, title: '가속', theme: 'neon', phase: 1, targetScore: 250, speedBase: 2.6, lives: 3, patterns: ['wave', 'accelerate'], patternWeights: [0.5, 0.5], condition: 'free_collect', conditionConfig: {}, spawnInterval: 48 },
-      { lv: 7, title: '지그재그', theme: 'neon', phase: 1, targetScore: 275, speedBase: 2.25, lives: 3, patterns: ['wave', 'zigzag'], patternWeights: [0.7, 0.3], condition: 'free_collect', conditionConfig: {}, spawnInterval: 46 },
-      { lv: 8, title: '연속선', theme: 'neon', phase: 1, targetScore: 300, speedBase: 2.45, lives: 3, patterns: ['zigzag', 'accelerate'], patternWeights: [0.35, 0.65], condition: 'free_collect', conditionConfig: {}, spawnInterval: 44 },
-      { lv: 9, title: '추적', theme: 'neon', phase: 1, targetScore: 330, speedBase: 2.45, lives: 3, patterns: ['chase', 'zigzag'], patternWeights: [0.65, 0.35], condition: 'free_collect', conditionConfig: {}, spawnInterval: 42 },
-      { lv: 10, title: '입체감', theme: 'neon', phase: 1, targetScore: 360, speedBase: 2.6, lives: 3, patterns: ['chase', 'accelerate', 'zigzag'], patternWeights: [0.45, 0.4, 0.15], condition: 'free_collect', conditionConfig: {}, spawnInterval: 40 },
-      { lv: 11, title: '교감', theme: 'forest', phase: 2, targetScore: 390, speedBase: 2.7, lives: 3, patterns: ['chase', 'wave'], patternWeights: [0.35, 0.65], condition: 'free_collect', conditionConfig: {}, spawnInterval: 38 },
-      { lv: 12, title: '교란', theme: 'forest', phase: 2, targetScore: 420, speedBase: 2.8, lives: 3, patterns: ['wave', 'chase'], patternWeights: [0.75, 0.25], condition: 'free_collect', conditionConfig: {}, spawnInterval: 36 },
-      { lv: 13, title: '시계', theme: 'forest', phase: 2, targetScore: 450, speedBase: 2.95, lives: 3, patterns: ['wave', 'zigzag'], patternWeights: [0.65, 0.35], condition: 'free_collect', conditionConfig: {}, spawnInterval: 35 },
-      { lv: 14, title: '페이크', theme: 'forest', phase: 2, targetScore: 480, speedBase: 3.05, lives: 3, patterns: ['fake', 'wave'], patternWeights: [0.3, 0.7], condition: 'free_collect', conditionConfig: {}, spawnInterval: 33 },
-      { lv: 15, title: '타이밍', theme: 'forest', phase: 2, targetScore: 515, speedBase: 3.15, lives: 3, patterns: ['fake', 'chase'], patternWeights: [0.35, 0.65], condition: 'free_collect', conditionConfig: {}, spawnInterval: 31 },
-      { lv: 16, title: '규칙', theme: 'space', phase: 3, targetScore: 720, speedBase: 3.25, lives: 3, patterns: ['cluster', 'chase'], patternWeights: [0.35, 0.65], condition: 'free_collect', conditionConfig: {}, spawnInterval: 30 },
-      { lv: 17, title: '폭주', theme: 'space', phase: 3, targetScore: 740, speedBase: 3.4, lives: 3, patterns: ['cluster', 'fake', 'chase'], patternWeights: [0.45, 0.2, 0.35], condition: 'free_collect', conditionConfig: {}, spawnInterval: 29 },
-      { lv: 18, title: '혼란', theme: 'neon', phase: 3, targetScore: 760, speedBase: 3.55, lives: 3, patterns: ['cluster', 'fake', 'chase'], patternWeights: [0.42, 0.1, 0.48], condition: 'free_collect', conditionConfig: {}, spawnInterval: 28 },
-      { lv: 19, title: '극한', theme: 'neon', phase: 3, targetScore: 800, speedBase: 3.75, lives: 3, patterns: ['cluster', 'fake', 'chase'], patternWeights: [0.35, 0.25, 0.4], condition: 'free_collect', conditionConfig: {}, spawnInterval: 28 },
-      { lv: 20, title: '마스터', theme: 'space', phase: 3, targetScore: 860, speedBase: 4.0, lives: 3, patterns: ['cluster', 'fake', 'chase', 'zigzag'], patternWeights: [0.35, 0.2, 0.25, 0.2], condition: 'free_collect', conditionConfig: {}, spawnInterval: 26 },
+      { lv: 1, title: '첫 수집', theme: 'space', phase: 0, targetScore: 180, speedBase: 2.0, lives: 3, patterns: ['straight'], patternWeights: [1], condition: 'free_collect', conditionConfig: {}, spawnInterval: 60 },
+      { lv: 2, title: '감 익히기', theme: 'space', phase: 0, targetScore: 220, speedBase: 2.2, lives: 3, patterns: ['straight'], patternWeights: [1], condition: 'free_collect', conditionConfig: {}, spawnInterval: 56 },
+      { lv: 3, title: '흔들림', theme: 'space', phase: 0, targetScore: 260, speedBase: 2.2, lives: 3, patterns: ['straight', 'wave'], patternWeights: [0.6, 0.4], condition: 'free_collect', conditionConfig: {}, spawnInterval: 54 },
+      { lv: 4, title: '파도', theme: 'space', phase: 0, targetScore: 305, speedBase: 2.4, lives: 3, patterns: ['straight', 'wave'], patternWeights: [0.4, 0.6], condition: 'free_collect', conditionConfig: {}, spawnInterval: 52 },
+      { lv: 5, title: '속도 시작', theme: 'neon', phase: 1, targetScore: 350, speedBase: 2.4, lives: 3, patterns: ['straight', 'accelerate'], patternWeights: [0.5, 0.5], condition: 'free_collect', conditionConfig: {}, spawnInterval: 50 },
+      { lv: 6, title: '가속', theme: 'neon', phase: 1, targetScore: 390, speedBase: 2.6, lives: 3, patterns: ['wave', 'accelerate'], patternWeights: [0.5, 0.5], condition: 'free_collect', conditionConfig: {}, spawnInterval: 48 },
+      { lv: 7, title: '지그재그', theme: 'neon', phase: 1, targetScore: 430, speedBase: 2.25, lives: 3, patterns: ['wave', 'zigzag'], patternWeights: [0.7, 0.3], condition: 'free_collect', conditionConfig: {}, spawnInterval: 46 },
+      { lv: 8, title: '연속선', theme: 'neon', phase: 1, targetScore: 470, speedBase: 2.45, lives: 3, patterns: ['zigzag', 'accelerate'], patternWeights: [0.35, 0.65], condition: 'free_collect', conditionConfig: {}, spawnInterval: 44 },
+      { lv: 9, title: '추적', theme: 'neon', phase: 1, targetScore: 510, speedBase: 2.45, lives: 3, patterns: ['chase', 'zigzag'], patternWeights: [0.65, 0.35], condition: 'free_collect', conditionConfig: {}, spawnInterval: 42 },
+      { lv: 10, title: '입체감', theme: 'neon', phase: 1, targetScore: 550, speedBase: 2.6, lives: 3, patterns: ['chase', 'accelerate', 'zigzag'], patternWeights: [0.45, 0.4, 0.15], condition: 'free_collect', conditionConfig: {}, spawnInterval: 40 },
+      { lv: 11, title: '교감', theme: 'forest', phase: 2, targetScore: 600, speedBase: 2.7, lives: 3, patterns: ['chase', 'wave'], patternWeights: [0.35, 0.65], condition: 'free_collect', conditionConfig: {}, spawnInterval: 38 },
+      { lv: 12, title: '교란', theme: 'forest', phase: 2, targetScore: 650, speedBase: 2.8, lives: 3, patterns: ['wave', 'chase'], patternWeights: [0.75, 0.25], condition: 'free_collect', conditionConfig: {}, spawnInterval: 36 },
+      { lv: 13, title: '시계', theme: 'forest', phase: 2, targetScore: 705, speedBase: 2.95, lives: 3, patterns: ['wave', 'zigzag'], patternWeights: [0.65, 0.35], condition: 'free_collect', conditionConfig: {}, spawnInterval: 35 },
+      { lv: 14, title: '페이크', theme: 'forest', phase: 2, targetScore: 765, speedBase: 3.05, lives: 3, patterns: ['fake', 'wave'], patternWeights: [0.3, 0.7], condition: 'free_collect', conditionConfig: {}, spawnInterval: 33 },
+      { lv: 15, title: '타이밍', theme: 'forest', phase: 2, targetScore: 830, speedBase: 3.15, lives: 3, patterns: ['fake', 'chase'], patternWeights: [0.35, 0.65], condition: 'free_collect', conditionConfig: {}, spawnInterval: 31 },
+      { lv: 16, title: '규칙', theme: 'space', phase: 3, targetScore: 920, speedBase: 3.25, lives: 3, patterns: ['cluster', 'chase'], patternWeights: [0.35, 0.65], condition: 'free_collect', conditionConfig: {}, spawnInterval: 30 },
+      { lv: 17, title: '폭주', theme: 'space', phase: 3, targetScore: 1000, speedBase: 3.4, lives: 3, patterns: ['cluster', 'fake', 'chase'], patternWeights: [0.45, 0.2, 0.35], condition: 'free_collect', conditionConfig: {}, spawnInterval: 29 },
+      { lv: 18, title: '혼란', theme: 'neon', phase: 3, targetScore: 1080, speedBase: 3.55, lives: 3, patterns: ['cluster', 'fake', 'chase'], patternWeights: [0.42, 0.1, 0.48], condition: 'free_collect', conditionConfig: {}, spawnInterval: 28 },
+      { lv: 19, title: '극한', theme: 'neon', phase: 3, targetScore: 1170, speedBase: 3.75, lives: 3, patterns: ['cluster', 'fake', 'chase'], patternWeights: [0.35, 0.25, 0.4], condition: 'free_collect', conditionConfig: {}, spawnInterval: 28 },
+      { lv: 20, title: '마스터', theme: 'space', phase: 3, targetScore: 1270, speedBase: 4.0, lives: 3, patterns: ['cluster', 'fake', 'chase', 'zigzag'], patternWeights: [0.35, 0.2, 0.25, 0.2], condition: 'free_collect', conditionConfig: {}, spawnInterval: 26 },
     ];
 
     const PHASE_NAMES = ['입문', '적응', '심화', '마스터'];
@@ -1676,7 +1667,6 @@
     const feverTrack = document.getElementById('fever-track');
     const feverFill = document.getElementById('fever-fill');
     const feverLabel = document.getElementById('fever-label');
-    const feverBarEl = document.getElementById('fever-bar');
     const slowBtn = document.getElementById('slow-btn');
     const slowCountEl = document.getElementById('slow-count');
 
@@ -1731,8 +1721,6 @@
     let tick = 0;   // increments each frame, drives background animations
 
     // Rule engine (legacy flash animation state)
-    let ruleChangeFrame = 0;
-    let ruleFlashFrames = 0;
     let deathFrame = -1;
     let feedbacks = [];
 
@@ -1745,9 +1733,6 @@
     let flashFrames = 0;    // bad-hit canvas flash (8 frames)
     let comboBarDrain = 0;    // combo reset drain animation (10 frames)
     let comboBarPulse = 0;    // combo-10 pulse animation (12 frames)
-    let ruleFlashSlide = 0;    // rule-change slide: >0 slide-in, <0 slide-out phase tracker
-    // ruleFlashFrames repurposed: total countdown (86 = 8 in + 70 hold + 8 out)
-
     // Level state
     let currentLevelIdx = 0;   // 0-based index into LEVELS
     let introTimer = null; // setTimeout handle for intro countdown
@@ -2161,24 +2146,22 @@
 
     // Mission pool
     const MISSION_POOL = [
-      { id: 'survive_seconds', type: 'survive_seconds', desc: '{n}초 동안 아무것도 놓치지 않기', reward: 60 },
       { id: 'combo_reach', type: 'combo_reach', desc: '콤보 {n} 달성하기', reward: 40 },
       { id: 'collect_after_rule_change', type: 'collect_after_rule_change', desc: '조건 바뀐 뒤 {n}개 연속 수집', reward: 70 },
     ];
 
     // Missions available by phase (0–3): harder missions unlock later
     const MISSION_BY_PHASE = [
-      ['survive_seconds'],
-      ['survive_seconds', 'combo_reach'],
-      ['survive_seconds', 'combo_reach'],
-      ['combo_reach', 'collect_after_rule_change', 'survive_seconds'],
+      ['combo_reach'],
+      ['combo_reach'],
+      ['combo_reach'],
+      ['combo_reach', 'collect_after_rule_change'],
     ];
 
     // Per-type target values scaled by phase
     const MISSION_TARGETS = {
       collect_n_total: [8, 12, 15, 20],
       collect_n_color: [3, 4, 5, 6],
-      survive_seconds: [6, 8, 10, 12],
       combo_reach: [4, 6, 8, 10],
       collect_after_rule_change: [2, 3, 3, 4],
     };
@@ -2381,25 +2364,21 @@
     }
 
     function renderFeverUI() {
+      const comboWrap = document.getElementById('cond-combo-wrap');
       if (feverActive) {
         // Hide normal combo bar, show fever track
         comboFill.parentElement.style.display = 'none';
         feverTrack.classList.add('active');
         feverLabel.classList.add('active');
-        feverBarEl.classList.add('active');
         // Fever fill width = remaining time ratio
         const pct = (feverFrames / FEVER_DURATION) * 100;
         feverFill.style.width = pct.toFixed(1) + '%';
-        // Pulse rule-bar background between accent and gold
-        const ruleBar = document.getElementById('rule-bar');
-        if (ruleBar) ruleBar.style.transition = 'background .3s';
+        if (comboWrap) comboWrap.classList.add('fever');
       } else {
         comboFill.parentElement.style.display = '';
         feverTrack.classList.remove('active');
         feverLabel.classList.remove('active');
-        feverBarEl.classList.remove('active');
-        const ruleBar = document.getElementById('rule-bar');
-        if (ruleBar) ruleBar.style.transition = 'background .35s ease';
+        if (comboWrap) comboWrap.classList.remove('fever');
       }
     }
 
@@ -2484,7 +2463,6 @@
       tick = 0;
       objSpawnFrame = lv.spawnInterval;
       deathFrame = -1;
-      ruleFlashFrames = 0;
       shakeFrames = 0;
       flashFrames = 0;
       comboBarDrain = 0;
@@ -2495,7 +2473,6 @@
 
       // Set collection condition directly from level
       activeCond = { type: lv.condition, ...(lv.conditionConfig || {}) };
-      ruleChangeFrame = frameCount + randInt(200, 400);
       // Reset condition-specific state
       seqIdx = 0;
       feverActive = false;
@@ -2656,42 +2633,9 @@
         if (deathFrame === 0) { deathFrame = -1; endGame(); return; }
       }
 
-      // Condition bar flash pulse (brief opacity blink when rule-change timer fires)
-      if (ruleFlashFrames > 0) {
-        ruleFlashFrames--;
-        const total = 60;
-        const t = ruleFlashFrames / total;
-        const opacity = Math.sin(t * Math.PI) * 0.55;
-        ruleFlash.style.opacity = opacity.toFixed(3);
-        if (ruleFlashFrames === 0) {
-          ruleFlash.style.opacity = '0';
-        }
-      }
-
-      // Periodic condition bar flash pulse
-      if (frameCount >= ruleChangeFrame) {
-        ruleChangeFrame = frameCount + randInt(200, 400);
-        ruleFlash.textContent = '';
-        ruleFlashFrames = 60;
-        // Reset collect_after_rule_change tracker
-        missionCollectsSinceCondChange = 0;
-        if (activeMission && activeMission.type === 'collect_after_rule_change') {
-          activeMission.progress = 0;
-        }
-      }
-
       // Fever countdown
       if (feverActive) {
         feverFrames--;
-        // Pulse rule-bar between accent and gold
-        const ruleBar = document.getElementById('rule-bar');
-        if (ruleBar && feverFrames % 30 < 15) {
-          ruleBar.style.background = '#5c4200';
-        } else if (ruleBar) {
-          const theme = THEMES[currentLevel().theme] || THEMES.space;
-          // use the current tint with a gold overlay effect
-          ruleBar.style.background = '';
-        }
         // Update fever countdown bar
         feverFill.style.width = ((feverFrames / FEVER_DURATION) * 100).toFixed(1) + '%';
         if (feverFrames <= 0) endFever();
@@ -3032,7 +2976,10 @@
       document.getElementById('combo-track').style.background = '';
       // Reset condition bar tint
       const ruleBar = document.getElementById('rule-bar');
-      if (ruleBar) ruleBar.className = '';
+      if (ruleBar) {
+        ruleBar.className = '';
+        ruleBar.style.background = '';
+      }
     }
 
     // BACKGROUND - three animated theme implementations
@@ -3309,11 +3256,7 @@
       introTheme.textContent = `테마: ${lv.theme}`;
       introTarget.textContent = `목표 점수: ${lv.targetScore}`;
 
-      const COND_LABEL = {
-        free_collect: '자유 수집',
-        color_sequence: '순서 수집',
-      };
-      introMechs.innerHTML = `<span class="mech-chip">${COND_LABEL[lv.condition] || lv.condition}</span>`;
+      introMechs.innerHTML = '';
 
       hideAllOverlays();
       introOverlay.classList.remove('hidden');
@@ -3364,7 +3307,7 @@
       const livesLost = (lv.lives || 3) - lives;
       retryScore.textContent = `Lv ${lv.lv} ${lv.title} · 점수 ${score} / ${lv.targetScore}`;
       retryProg.style.width = (pct * 100) + '%';
-      retryPct.textContent = `${Math.round(pct * 100)}% 달성 · 잃은 목숨 ${livesLost}개`;
+      retryPct.textContent = `${Math.round(pct * 100)}% 달성`;
 
       hideAllOverlays();
       retryOverlay.classList.remove('hidden');
