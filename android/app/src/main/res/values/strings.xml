@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Perfect Catch</string>
-    <string name="title_activity_main">Perfect Catch</string>
+    <string name="app_name">퍼펙트 캐치</string>
+    <string name="title_activity_main">퍼펙트 캐치</string>
     <string name="package_name">com.eunho.perfectcatch</string>
     <string name="custom_url_scheme">com.eunho.perfectcatch</string>
     <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>

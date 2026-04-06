@@ -2,6 +2,13 @@ App icon asset sources for `@capacitor/assets`.
 
 Current files:
 - `icon-only.png`: iOS/App Store icon source and fallback icon source for generated assets
+- `splash.png`: splash screen source image
+
+Filename-based conventions used by `@capacitor/assets` in this project:
+- `icon-only.png`: primary app icon source
+- `icon-foreground.png`: Android adaptive icon foreground source
+- `icon-background.png`: Android adaptive icon background source
+- `splash.png`: splash screen source
 
 Optional Android adaptive icon sources:
 - `icon-foreground.png`

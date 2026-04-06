@@ -6,7 +6,7 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <title>Perfect Catch</title>
+  <title>퍼펙트 캐치</title>
   <style>
     *,
     *::before,
@@ -89,7 +89,7 @@
     }
 
     body {
-      background: var(--c-bg);
+      background: #05081B;
       display: flex;
       justify-content: center;
       align-items: flex-start;
@@ -99,17 +99,51 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     #app {
       width: 100vw;
       max-width: 100vw;
-      background: var(--c-surface);
+      background: #05081B;
       height: 100dvh;
       display: flex;
       flex-direction: column;
       position: relative;
       overflow: hidden;
+      opacity: 0;
+      transition: opacity .12s var(--ease-out), background .12s var(--ease-out);
+    }
+
+    body.app-ready {
+      background: var(--c-bg);
+    }
+
+    body.app-ready #app {
+      background: var(--c-surface);
+      opacity: 1;
+    }
+
+    @media (min-width: 900px) and (pointer: coarse) {
+      body {
+        padding: 20px;
+        align-items: center;
+      }
+
+      #app {
+        width: min(100%, 460px);
+        max-width: 460px;
+        height: min(100dvh - 40px, 980px);
+        border-radius: 28px;
+        box-shadow: 0 20px 64px rgba(0, 0, 0, .16);
+      }
+    }
+
+    @media (min-width: 1200px) and (pointer: coarse) {
+      #app {
+        max-width: 480px;
+      }
     }
 
     /* ============================================
@@ -127,6 +161,7 @@
       background: var(--rule-bar-base);
       transition: background .35s var(--ease-out);
     }
+
     #rule-bar::before {
       content: '';
       position: absolute;
@@ -137,6 +172,7 @@
       background: rgba(0, 0, 0, .15);
       pointer-events: none;
     }
+
     #rule-bar.tint-free {
       --rule-bar-base: #1C1F28;
     }
@@ -152,6 +188,7 @@
     #rule-bar.tint-time {
       --rule-bar-base: #281818;
     }
+
     /* HUD chips — shared pill style */
     .hud-chip,
     #cond-combo-wrap {
@@ -184,21 +221,26 @@
       font-variant-numeric: tabular-nums;
       text-shadow: 0 1px 1px rgba(0, 0, 0, .18);
     }
+
     #cond-combo-val {
       color: #F6C65B;
     }
+
     #cond-combo-wrap {
       transition: background .18s var(--ease-out), border-color .18s var(--ease-out), box-shadow .18s var(--ease-out), transform .18s var(--ease-out);
     }
+
     #cond-combo-wrap.fever {
       background: rgba(239, 159, 39, .22);
       border-color: rgba(239, 159, 39, .34);
-      box-shadow: 0 0 0 1px rgba(239,159,39,.08), 0 6px 16px rgba(239,159,39,.12);
+      box-shadow: 0 0 0 1px rgba(239, 159, 39, .08), 0 6px 16px rgba(239, 159, 39, .12);
       transform: translateY(-1px);
     }
-    #cond-combo-wrap.fever > span:first-child {
+
+    #cond-combo-wrap.fever>span:first-child {
       color: rgba(255, 243, 214, .72);
     }
+
     #cond-combo-wrap.fever #cond-combo-val {
       color: #FFF3D6;
     }
@@ -272,6 +314,10 @@
     #mission-pill.hidden {
       opacity: 0;
       transform: translateY(-8px);
+    }
+
+    .hidden {
+      display: none !important;
     }
 
     #mission-pill.flash {
@@ -487,7 +533,7 @@
       cursor: pointer;
       transition: background .12s, border-color .12s, transform .12s var(--ease-spring);
       -webkit-tap-highlight-color: transparent;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .55);
     }
 
     .overlay-btn-ghost:active {
@@ -988,6 +1034,42 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    @media (min-width: 900px) and (pointer: coarse) {
+      #settings-sheet {
+        display: block;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity .2s var(--ease-out);
+      }
+
+      #settings-sheet.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      #settings-panel {
+        top: 50%;
+        bottom: auto;
+        left: 50%;
+        width: min(100% - 40px, 440px);
+        max-width: 440px;
+        max-height: min(78dvh, 680px);
+        overflow: auto;
+        border-radius: 28px;
+        padding: 0;
+        transform: translate(-50%, calc(-50% + 28px)) scale(.98);
+        transition: transform .24s var(--ease-out), opacity .2s var(--ease-out);
+      }
+
+      #settings-sheet.open #settings-panel {
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      .sheet-handle {
+        display: none;
+      }
+    }
+
     .sheet-handle {
       width: 36px;
       height: 4px;
@@ -1423,7 +1505,7 @@
         <div id="overlay">
           <div class="overlay-card">
             <div class="overlay-label">캐주얼 아케이드</div>
-            <div id="overlay-title" class="overlay-title">Perfect Catch</div>
+            <div id="overlay-title" class="overlay-title">퍼펙트 캐치</div>
             <div id="overlay-sub" class="overlay-sub">떨어지는 오브젝트를 최대한 모으세요.<br>놓치면 목숨이 줄고, 콤보를 쌓으면 점수가 폭등합니다.</div>
             <div id="overlay-scores"></div>
             <div class="overlay-btns">
@@ -1499,6 +1581,30 @@
           <div class="toggle-thumb"></div>
         </label>
       </div>
+      <div class="sheet-row" id="remove-ads-row">
+        <button class="sheet-action-btn" id="remove-ads-btn" type="button">
+          <span class="sheet-action-copy">
+            <span class="sheet-row-label">광고 제거</span>
+            <span class="sheet-row-sub" id="remove-ads-sub">한 번 구매로 모든 광고 제거</span>
+          </span>
+          <span class="sheet-action-arrow">›</span>
+        </button>
+      </div>
+      <div class="sheet-row" id="restore-ads-row">
+        <button class="sheet-action-btn" id="restore-ads-btn" type="button">
+          <span class="sheet-action-copy">
+            <span class="sheet-row-label">구매 복원</span>
+            <span class="sheet-row-sub">이전 기기에서 구매한 경우</span>
+          </span>
+          <span class="sheet-action-arrow">›</span>
+        </button>
+      </div>
+      <div class="sheet-row hidden" id="ads-removed-row">
+        <div class="sheet-action-copy" style="padding: 0 4px;">
+          <span class="sheet-row-label" style="color: var(--c-brand);">광고 제거됨</span>
+          <span class="sheet-row-sub">구매해 주셔서 감사합니다</span>
+        </div>
+      </div>
       <div class="sheet-row hidden" id="ads-privacy-row">
         <button class="sheet-action-btn" id="ads-privacy-btn" type="button">
           <span class="sheet-action-copy">
@@ -1516,7 +1622,7 @@
   <script>
     // CONSTANTS & CONFIG
     const ADMOB_USE_TEST_IDS = true;
-    const ADMOB_INTERSTITIAL_MIN_INTERVAL_MS = 120000;
+    const ADMOB_INTERSTITIAL_MIN_INTERVAL_MS = 180000;
     const ADMOB_RETRY_REWARD = Object.freeze({ extraLife: 1 });
     const ADMOB_IDS = {
       ios: {
@@ -1678,6 +1784,7 @@
         bestScores: new Array(20).fill(0),
         totalScore: 0,
         settings: { sfxEnabled: true, vibrationEnabled: true },
+        adsRemoved: false,
       };
     }
 
@@ -1693,6 +1800,7 @@
             bestScores: s.bestScores ?? d.bestScores,
             totalScore: s.totalScore ?? d.totalScore,
             settings: { ...d.settings, ...(s.settings || {}) },
+            adsRemoved: s.adsRemoved ?? d.adsRemoved,
           };
         }
       } catch (_) { }
@@ -1707,29 +1815,107 @@
 
     let adsReady = false;
     let adsCanRequest = false;
+    let adsPrivacyOptionsRequired = false;
     let lastInterstitialAt = 0;
     let eligibleInterstitialTransitions = 0;
     let pendingRewardBoost = null;
-    let rewardBoostConsumedThisRun = false;
+    let rewardBoostConsumedThisLevel = false;
+    let rewardBoostLevelIdx = null;
     let hasCompletedFirstPlaySession = false;
 
-    // Haptic feedback (Capacitor Haptics with navigator.vibrate fallback)
-    let _Haptics = null;
-    let _ImpactStyle = null;
-    (async () => {
-      try {
-        const mod = await import('./node_modules/@capacitor/haptics/dist/esm/index.js');
-        _Haptics = mod.Haptics;
-        _ImpactStyle = mod.ImpactStyle;
-      } catch (_) { }
-    })();
+    // Haptic feedback via window.Capacitor.Plugins.Haptics (native) or navigator.vibrate (fallback)
+    function _getHapticsPlugin() {
+      return window.Capacitor?.Plugins?.Haptics || null;
+    }
+    const ImpactStyle = { Light: 'LIGHT', Medium: 'MEDIUM', Heavy: 'HEAVY' };
 
     function vibrate(pattern, style) {
       if (!save.settings.vibrationEnabled) return;
-      if (_Haptics && _ImpactStyle) {
-        _Haptics.impact({ style: style || _ImpactStyle.Light }).catch(() => { });
+      const Haptics = _getHapticsPlugin();
+      if (Haptics) {
+        Haptics.impact({ style: style || ImpactStyle.Light }).catch(() => { });
       } else if (navigator.vibrate) {
         navigator.vibrate(pattern);
+      }
+    }
+
+    // SFX via Web Audio API
+    let _audioCtx = null;
+    function _getAudioCtx() {
+      if (!_audioCtx) {
+        try { _audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch (_) { }
+      }
+      // iOS WKWebView suspends AudioContext until a user gesture — resume on each call
+      if (_audioCtx && _audioCtx.state === 'suspended') {
+        _audioCtx.resume().catch(() => { });
+      }
+      return _audioCtx;
+    }
+    function playSound(type) {
+      if (!save.settings.sfxEnabled) return;
+      const ctx = _getAudioCtx();
+      if (!ctx) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      const now = ctx.currentTime;
+      if (type === 'catch') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(880, now);
+        osc.frequency.exponentialRampToValueAtTime(1200, now + 0.08);
+        gain.gain.setValueAtTime(0.25, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+        osc.start(now);
+        osc.stop(now + 0.12);
+      } else if (type === 'combo') {
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(660, now);
+        osc.frequency.exponentialRampToValueAtTime(1000, now + 0.1);
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+        osc.start(now);
+        osc.stop(now + 0.15);
+      } else if (type === 'fever') {
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(440, now);
+        osc.frequency.exponentialRampToValueAtTime(880, now + 0.2);
+        gain.gain.setValueAtTime(0.3, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+        osc.start(now);
+        osc.stop(now + 0.25);
+      } else if (type === 'miss') {
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(300, now);
+        osc.frequency.exponentialRampToValueAtTime(100, now + 0.15);
+        gain.gain.setValueAtTime(0.25, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+        osc.start(now);
+        osc.stop(now + 0.18);
+      } else if (type === 'gameover') {
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(400, now);
+        osc.frequency.exponentialRampToValueAtTime(80, now + 0.4);
+        gain.gain.setValueAtTime(0.3, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+        osc.start(now);
+        osc.stop(now + 0.45);
+      } else if (type === 'mission') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(1047, now);
+        osc.frequency.setValueAtTime(1319, now + 0.1);
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
+        osc.start(now);
+        osc.stop(now + 0.22);
+      } else if (type === 'slow') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(600, now);
+        osc.frequency.exponentialRampToValueAtTime(300, now + 0.15);
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+        osc.start(now);
+        osc.stop(now + 0.18);
       }
     }
 
@@ -1798,6 +1984,12 @@
     const adsPrivacyRow = document.getElementById('ads-privacy-row');
     const adsPrivacyBtn = document.getElementById('ads-privacy-btn');
     const dataResetBtn = document.getElementById('data-reset-btn');
+    const removeAdsRow = document.getElementById('remove-ads-row');
+    const removeAdsBtn = document.getElementById('remove-ads-btn');
+    const removeAdsSub = document.getElementById('remove-ads-sub');
+    const restoreAdsRow = document.getElementById('restore-ads-row');
+    const restoreAdsBtn = document.getElementById('restore-ads-btn');
+    const adsRemovedRow = document.getElementById('ads-removed-row');
 
     function platformName() {
       const cap = window.Capacitor;
@@ -1898,11 +2090,14 @@
         plugin.addListener(AD_EVENTS.rewardEarned, () => {
           rewardEarnedThisShow = true;
           pendingRewardBoost = { ...ADMOB_RETRY_REWARD };
+          rewardBoostConsumedThisLevel = true;
+          rewardBoostLevelIdx = currentLevelIdx;
           syncAvailability();
         });
       }
 
       async function initAds() {
+        if (save.adsRemoved) return false;
         if (initializing) return initializing;
         initializing = (async () => {
           plugin = resolveAdMobPlugin();
@@ -1930,8 +2125,10 @@
             if (typeof plugin.requestConsentInfo === 'function') {
               consentInfo = await plugin.requestConsentInfo();
               adsCanRequest = consentInfo?.canRequestAds ?? true;
+              adsPrivacyOptionsRequired = consentInfo?.privacyOptionsRequirementStatus === 'REQUIRED';
             } else {
               adsCanRequest = true;
+              adsPrivacyOptionsRequired = false;
             }
 
             if (platformName() === 'ios' && typeof plugin.trackingAuthorizationStatus === 'function') {
@@ -1944,9 +2141,11 @@
             if (!adsCanRequest && consentInfo?.isConsentFormAvailable && typeof plugin.showConsentForm === 'function') {
               const updatedConsent = await plugin.showConsentForm();
               adsCanRequest = updatedConsent?.canRequestAds ?? adsCanRequest;
+              adsPrivacyOptionsRequired = updatedConsent?.privacyOptionsRequirementStatus === 'REQUIRED';
             }
           } catch (_) {
             adsCanRequest = true;
+            adsPrivacyOptionsRequired = false;
           }
 
           if (adsCanRequest) {
@@ -2007,10 +2206,11 @@
       }
 
       async function showInterstitialIfEligible(reason) {
+        if (save.adsRemoved) return false;
         plugin = plugin || resolveAdMobPlugin();
         eligibleInterstitialTransitions++;
         const enoughTimePassed = Date.now() - lastInterstitialAt >= ADMOB_INTERSTITIAL_MIN_INTERVAL_MS;
-        const isScheduledTurn = eligibleInterstitialTransitions % 2 === 0;
+        const isScheduledTurn = eligibleInterstitialTransitions % 3 === 0;
         if (!plugin || !adsReady || !adsCanRequest || !hasCompletedFirstPlaySession || !enoughTimePassed || !isScheduledTurn) {
           void preloadInterstitial(reason + '-skip');
           return false;
@@ -2032,6 +2232,7 @@
       }
 
       async function showRewardedForRetryBoost() {
+        if (save.adsRemoved) return false;
         plugin = plugin || resolveAdMobPlugin();
         if (!plugin || !adsReady || !adsCanRequest) return false;
         if (!rewardReady) {
@@ -2082,13 +2283,112 @@
       };
     })();
 
+    // ── IAP / 광고 제거 ─────────────────────────────────────────────────
+    const IAP_PRODUCT_ID = 'com.eunho.perfectcatch.removeads';
+    const IAP_ENTITLEMENT_ID = 'remove_ads';
+
+    const purchaseService = (() => {
+      let plugin = null;
+
+      function resolve() {
+        plugin = plugin || window.Capacitor?.Plugins?.Purchases || null;
+        return plugin;
+      }
+
+      function isEntitled(info) {
+        return !!(info?.customerInfo?.entitlements?.active?.[IAP_ENTITLEMENT_ID]);
+      }
+
+      function applyEntitlement(entitled) {
+        if (save.adsRemoved !== entitled) {
+          save.adsRemoved = entitled;
+          writeSave();
+        }
+        updateRemoveAdsUI();
+      }
+
+      async function setup() {
+        // Non-native: reset any stale adsRemoved flag from localStorage
+        if (!isNativePlatform()) {
+          applyEntitlement(false);
+          return;
+        }
+        const p = resolve();
+        if (!p) {
+          // Purchases plugin unavailable — cannot verify, clear any stale flag
+          applyEntitlement(false);
+          return;
+        }
+        try {
+          const rcApiKey = platformName() === 'android'
+            ? 'goog_REPLACE_WITH_YOUR_REVENUECAT_ANDROID_PUBLIC_API_KEY'
+            : 'appl_ybONqquEsxkFOZRVqZNFjmCNGAI';
+          await p.configure({ apiKey: rcApiKey });
+          // RevenueCat is source of truth — correct any stale localStorage value
+          const info = await p.getCustomerInfo();
+          applyEntitlement(isEntitled(info));
+        } catch (e) {
+          console.error('[IAP setup error]', e);
+          // On error, clear any stale flag to avoid showing false "ads removed" state
+          applyEntitlement(false);
+        }
+      }
+
+      async function purchase() {
+        const p = resolve();
+        if (!p) {
+          alert('인앱 결제는 실기기에서만 사용할 수 있습니다.');
+          return false;
+        }
+        try {
+          // v10 API: getProducts → purchaseStoreProduct
+          const productsResult = await p.getProducts({ productIdentifiers: [IAP_PRODUCT_ID] });
+          const product = productsResult?.products?.[0];
+          if (!product) {
+            alert('제품 정보를 불러올 수 없습니다. App Store Connect 등록을 확인해 주세요.');
+            return false;
+          }
+          const result = await p.purchaseStoreProduct({ product });
+          if (isEntitled(result)) {
+            applyEntitlement(true);
+            return true;
+          }
+        } catch (e) {
+          if (e?.code === 'PURCHASE_CANCELLED' || e?.userCancelled) return false;
+          alert('구매 오류: ' + (e?.message || e?.code || JSON.stringify(e)));
+        }
+        return false;
+      }
+
+      async function restore() {
+        const p = resolve();
+        if (!p) {
+          alert('인앱 결제는 실기기에서만 사용할 수 있습니다.');
+          return false;
+        }
+        try {
+          const result = await p.restorePurchases();
+          if (isEntitled(result)) {
+            applyEntitlement(true);
+            return true;
+          }
+        } catch (e) {
+          alert('복원 오류: ' + (e?.message || e?.code || JSON.stringify(e)));
+        }
+        return false;
+      }
+
+      return { setup, purchase, restore };
+    })();
+
     function renderAdEntryPoints() {
-      const nativeAdsAvailable = adService.isNativeAdsAvailable();
+      const nativeAdsAvailable = adService.isNativeAdsAvailable() && !save.adsRemoved;
       retryRewardBtn.classList.toggle('hidden', !nativeAdsAvailable);
-      const rewardLocked = rewardBoostConsumedThisRun;
+      const rewardLocked = rewardBoostConsumedThisLevel && rewardBoostLevelIdx === currentLevelIdx;
       retryRewardBtn.disabled = nativeAdsAvailable ? (!adService.isRewardReady() || rewardLocked) : true;
       retryRewardBtn.style.opacity = retryRewardBtn.disabled ? '0.6' : '1';
       adsPrivacyRow.classList.toggle('hidden', !nativeAdsAvailable);
+      adsPrivacyRow.classList.toggle('hidden', !nativeAdsAvailable || !adsPrivacyOptionsRequired);
     }
 
     // RESIZE CANVAS
@@ -2513,7 +2813,8 @@
         score += pts;
         if (score > best) best = score;
         player.eyeBlink = 200;
-        vibrate(12, _ImpactStyle?.Light);
+        vibrate(12, ImpactStyle.Light);
+        playSound(combo >= 3 ? 'combo' : 'catch');
         const text = `+${pts}`;
         feedbacks.push({ text, color: feverActive ? '#EF9F27' : '#1D9E75', alpha: 1, framesLeft: 22, ox: px, oy: py });
         // Trigger fever when combo hits threshold (only if not already in fever)
@@ -2523,13 +2824,15 @@
         score += pts;
         if (score > best) best = score;
         feedbacks.push({ text: label, color: '#D85A30', alpha: 1, framesLeft: 22, ox: px, oy: py });
-        vibrate([10, 5, 10], _ImpactStyle?.Medium);
+        vibrate([10, 5, 10], ImpactStyle.Medium);
+        playSound('catch');
       } else {
         const pts = Math.round(feverMul * 10);
         score += pts;
         if (score > best) best = score;
         feedbacks.push({ text: `+${pts}`, color: '#EF9F27', alpha: 1, framesLeft: 22, ox: px, oy: py });
-        vibrate(6, _ImpactStyle?.Light);
+        vibrate(6, ImpactStyle.Light);
+        playSound('catch');
       }
 
       score = toWholeScore(score);
@@ -2675,7 +2978,8 @@
         ox: w / 2,
         oy: 40,
       });
-      vibrate([10, 5, 30], _ImpactStyle?.Medium);
+      vibrate([10, 5, 30], ImpactStyle.Medium);
+      playSound('mission');
 
       // Schedule next mission after 3s (180 frames) gap
       activeMission = null;
@@ -2745,7 +3049,8 @@
       feverActive = true;
       feverFrames = FEVER_DURATION;
       combo = 0;  // reset combo after fever triggers so bar doesn't instantly re-trigger
-      vibrate([20, 10, 20, 10, 40], _ImpactStyle?.Heavy);
+      vibrate([20, 10, 20, 10, 40], ImpactStyle.Heavy);
+      playSound('fever');
       feedbacks.push({
         text: 'FEVER!',
         color: '#EF9F27',
@@ -2798,7 +3103,8 @@
       slowCharges--;
       slowActive = true;
       slowFrames = SLOW_DURATION;
-      vibrate([8, 4, 8], _ImpactStyle?.Medium);
+      vibrate([8, 4, 8], ImpactStyle.Medium);
+      playSound('slow');
       renderSlowUI();
     }
 
@@ -2815,7 +3121,8 @@
       const losesLife = !obj.noLifeLossOnMiss;
       if (losesLife) {
         lives = Math.max(0, lives - 1);
-        vibrate([20, 10, 20], _ImpactStyle?.Heavy);
+        vibrate([20, 10, 20], ImpactStyle.Heavy);
+        playSound('miss');
       }
 
       // Miss animation: downward label at exit x
@@ -2861,7 +3168,6 @@
       combo = 0;
       maxLives = (lv.lives || 3);
       lives = maxLives;
-      rewardBoostConsumedThisRun = false;
       frameCount = 0;
       tick = 0;
       objSpawnFrame = lv.spawnInterval;
@@ -2885,11 +3191,9 @@
       slowFadeFrames = 0;
       slowCharges = 2;
 
-      if (pendingRewardBoost) {
+      if (pendingRewardBoost && rewardBoostLevelIdx === currentLevelIdx) {
         maxLives = (lv.lives || 3) + pendingRewardBoost.extraLife;
         lives = maxLives;
-        rewardBoostConsumedThisRun = true;
-        pendingRewardBoost = null;
       }
 
       activeMission = null;
@@ -3656,6 +3960,12 @@
       clearTimeout(introTimer);
       renderPauseButton();
 
+      if (rewardBoostLevelIdx !== null && rewardBoostLevelIdx !== lvIdx) {
+        pendingRewardBoost = null;
+        rewardBoostConsumedThisLevel = false;
+        rewardBoostLevelIdx = null;
+      }
+
       currentLevelIdx = lvIdx;
       const lv = currentLevel();
 
@@ -3735,7 +4045,8 @@
       renderPauseButton();
       cancelAnimationFrame(frameId);
       draw();
-      vibrate([30, 20, 30, 20, 50], _ImpactStyle?.Heavy);
+      vibrate([30, 20, 30, 20, 50], ImpactStyle.Heavy);
+      playSound('gameover');
       score = toWholeScore(score);
       best = toWholeScore(best);
 
@@ -3969,7 +4280,45 @@
     });
 
     adsPrivacyBtn.addEventListener('click', async () => {
-      await adService.openPrivacyOptions();
+      const ok = await adService.openPrivacyOptions();
+      if (!ok) alert('현재는 광고 개인정보 설정을 열 수 없습니다.');
+    });
+
+    function updateRemoveAdsUI() {
+      if (save.adsRemoved) {
+        removeAdsRow.classList.add('hidden');
+        restoreAdsRow.classList.add('hidden');
+        adsRemovedRow.classList.remove('hidden');
+      } else {
+        removeAdsRow.classList.remove('hidden');
+        restoreAdsRow.classList.remove('hidden');
+        adsRemovedRow.classList.add('hidden');
+        removeAdsSub.textContent = '한 번 구매로 모든 광고 제거';
+      }
+    }
+
+    removeAdsBtn.addEventListener('click', async () => {
+      removeAdsBtn.disabled = true;
+      removeAdsSub.textContent = '처리 중…';
+      const ok = await purchaseService.purchase();
+      if (ok) {
+        updateRemoveAdsUI();
+      } else {
+        removeAdsSub.textContent = '한 번 구매로 모든 광고 제거';
+        removeAdsBtn.disabled = false;
+      }
+    });
+
+    restoreAdsBtn.addEventListener('click', async () => {
+      restoreAdsBtn.disabled = true;
+      const ok = await purchaseService.restore();
+      if (ok) {
+        updateRemoveAdsUI();
+        alert('구매가 복원되었습니다.');
+      } else {
+        alert('복원할 구매 내역이 없습니다.');
+      }
+      restoreAdsBtn.disabled = false;
     });
 
     dataResetBtn.addEventListener('click', () => {
@@ -4003,7 +4352,15 @@
     overlay.classList.remove('hidden');
     renderPauseButton();
     updateUI();
+    document.body.classList.add('app-ready');
+    updateRemoveAdsUI();
+    void purchaseService.setup().then(() => updateRemoveAdsUI());
     void adService.initAds();
+
+    // Hide Capacitor SplashScreen once app is ready
+    if (window.Capacitor?.isNativePlatform?.()) {
+      window.Capacitor.Plugins.SplashScreen?.hide({ fadeOutDuration: 300 });
+    }
   </script>
 </body>
 
